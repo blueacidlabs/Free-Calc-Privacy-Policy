@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy - Free Calculator</title>
+<meta name="description" content="Privacy Policy for the Free Calculator app by Blue Acid Labs.">
+<style>
+  :root{
+    --sky: #0BC5EA;
+    --red: #D32F2F;
+    --white: #FFFFFF;
+    --ink: #1a1a1a;
+    --ink-soft: #5a5a5a;
+    --line: #e7e7e7;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--white);
+    color:var(--ink);
+    font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-weight:700;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+  }
+
+  a{color:var(--sky); text-decoration-color: rgba(11,197,234,.4);}
+  a:hover{text-decoration-color: var(--sky);}
+  a:focus-visible, button:focus-visible{
+    outline:2px solid var(--red);
+    outline-offset:3px;
+  }
+
+  /* ---------- Header ---------- */
+  header.top{
+    border-bottom:1px solid var(--line);
+    padding:20px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    position:sticky;
+    top:0;
+    background:var(--white);
+    z-index:30;
+  }
+  header.top .title{
+    font-size:1.05rem;
+    font-weight:700;
+  }
+  header.top .title span{color:var(--sky);}
+
+  button#menuToggle{
+    display:none;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:6px;
+  }
+  button#menuToggle .bar,
+  button#menuToggle .bar::before,
+  button#menuToggle .bar::after{
+    content:'';
+    display:block;
+    width:22px;
+    height:2px;
+    background:var(--ink);
+    position:relative;
+    transition:transform .2s ease;
+  }
+  button#menuToggle .bar::before{position:absolute; top:-7px;}
+  button#menuToggle .bar::after{position:absolute; top:7px;}
+
+  /* ---------- Shell ---------- */
+  .shell{
+    max-width:1160px;
+    margin:0 auto;
+    padding:64px 24px 100px;
+    display:grid;
+    grid-template-columns:240px 1fr;
+    gap:64px;
+    align-items:start;
+  }
+
+  /* ---------- TOC (no box, just a plain list with rule) ---------- */
+  nav.toc{
+    position:sticky;
+    top:96px;
+  }
+  nav.toc p.label{
+    font-size:.8rem;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+  }
+  nav.toc ol{
+    list-style:none;
+    margin:0; padding:0;
+  }
+  nav.toc li{margin:0 0 2px;}
+  nav.toc a{
+    display:block;
+    padding:7px 0;
+    color:var(--ink-soft);
+    text-decoration:none;
+    font-size:.93rem;
+    border-left:2px solid transparent;
+    padding-left:14px;
+    margin-left:-14px;
+  }
+  nav.toc a:hover{color:var(--ink);}
+  nav.toc a.active{
+    color:var(--ink);
+    font-weight:600;
+    border-left-color:var(--red);
+  }
+
+  /* ---------- Main content, plain flow, no cards ---------- */
+  main{min-width:0;}
+
+  main h1{
+    font-size:clamp(2rem, 4vw, 2.6rem);
+    margin:0 0 8px;
+  }
+  main > p.subtitle{
+    color:var(--ink-soft);
+    margin:0 0 6px;
+  }
+  .meta{
+    margin:24px 0 48px;
+    padding-bottom:32px;
+    border-bottom:1px solid var(--line);
+    color:var(--ink-soft);
+    font-size:.92rem;
+  }
+  .meta strong{color:var(--ink);}
+
+  .intro{
+    color:var(--ink-soft);
+    margin:0 0 48px;
+    max-width:72ch;
+  }
+
+  section{
+    padding:36px 0;
+    border-bottom:1px solid var(--line);
+    scroll-margin-top:100px;
+  }
+  section:last-of-type{border-bottom:none;}
+
+  section h2{
+    font-size:1.35rem;
+    margin:0 0 16px;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+  }
+  section h2 .n{
+    color:var(--sky);
+    font-size:.95rem;
+    font-weight:700;
+  }
+  section h3{
+    font-size:1.02rem;
+    margin:24px 0 8px;
+    color:var(--ink);
+  }
+  section p{
+    color:var(--ink-soft);
+    margin:0 0 14px;
+    max-width:72ch;
+  }
+  section ul{
+    margin:0 0 16px;
+    padding-left:0;
+    list-style:none;
+    max-width:72ch;
+  }
+  section ul li{
+    position:relative;
+    padding-left:20px;
+    margin-bottom:10px;
+    color:var(--ink-soft);
+  }
+  section ul li::before{
+    content:'';
+    position:absolute;
+    left:0; top:10px;
+    width:6px; height:6px;
+    border-radius:50%;
+    background:var(--red);
+  }
+
+  .cancel-path{
+    color:var(--ink);
+    font-weight:600;
+    margin:4px 0 18px;
+  }
+  .cancel-path .arrow{
+    color:var(--red);
+    margin:0 8px;
+    font-weight:400;
+  }
+
+  footer{
+    max-width:1160px;
+    margin:0 auto;
+    padding:28px 24px 48px;
+    color:var(--ink-soft);
+    font-size:.85rem;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    border-top:1px solid var(--line);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:880px){
+    .shell{grid-template-columns:1fr;}
+    nav.toc{
+      position:fixed;
+      top:0; right:0; bottom:0;
+      width:min(80vw,300px);
+      background:var(--white);
+      padding:90px 26px 26px;
+      transform:translateX(100%);
+      transition:transform .25s ease;
+      z-index:29;
+      overflow-y:auto;
+      border-left:1px solid var(--line);
+    }
+    nav.toc.open{transform:translateX(0);}
+    button#menuToggle{display:block;}
+  }
+
+  @media (max-width:560px){
+    header.top{padding:16px 18px;}
+    .shell{padding:40px 18px 72px;}
+    footer{padding:24px 18px 40px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+
+  .scrim{
+    display:none;
+    position:fixed; inset:0;
+    background:rgba(0,0,0,.3);
+    z-index:28;
+  }
+  .scrim.open{display:block;}
+
+  /* ---------- Language selector + overflow safety ---------- */
+  html, body{max-width:100%; overflow-x:hidden;}
+  body, button, select, input, textarea{font:inherit;}
+  main, section, p, li, h1, h2, h3, a, span{overflow-wrap:anywhere;}
+  img, svg, video, iframe{max-width:100%;}
+  .top-actions{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+    min-width:0;
+  }
+  .language-wrap{
+    position:relative;
+    display:flex;
+    align-items:center;
+    min-width:0;
+  }
+  #languageSelect{
+    max-width:min(44vw, 190px);
+    min-height:40px;
+    border:1px solid var(--line);
+    border-radius:10px;
+    background:var(--white);
+    color:var(--ink);
+    padding:8px 34px 8px 11px;
+    cursor:pointer;
+    font-size:.9rem;
+    font-weight:600;
+    line-height:1.2;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+  }
+  #languageSelect:hover{border-color:var(--sky);}
+  #languageSelect:focus-visible{
+    outline:2px solid var(--red);
+    outline-offset:2px;
+    border-color:var(--sky);
+  }
+  header.top .title{min-width:0; overflow-wrap:anywhere;}
+  .cancel-path{overflow-wrap:anywhere;}
+  html[dir="rtl"] body{text-align:right;}
+  html[dir="rtl"] nav.toc a{
+    border-left-color:transparent;
+    border-right:2px solid transparent;
+    padding-left:0;
+    padding-right:14px;
+    margin-left:0;
+    margin-right:-14px;
+  }
+  html[dir="rtl"] nav.toc a.active{
+    border-left-color:transparent;
+    border-right-color:var(--red);
+  }
+  html[dir="rtl"] section ul li{
+    padding-left:0;
+    padding-right:20px;
+  }
+  html[dir="rtl"] section ul li::before{
+    left:auto;
+    right:0;
+  }
+  html[dir="rtl"] .cancel-path .arrow{
+    display:inline-block;
+    transform:scaleX(-1);
+  }
+  @media (max-width:880px){
+    html[dir="rtl"] nav.toc{
+      right:auto;
+      left:0;
+      border-left:none;
+      border-right:1px solid var(--line);
+      transform:translateX(-100%);
+    }
+    html[dir="rtl"] nav.toc.open{transform:translateX(0);}
+  }
+  @media (max-width:560px){
+    header.top{gap:10px;}
+    header.top .title{font-size:.98rem;}
+    .top-actions{gap:8px;}
+    #languageSelect{
+      max-width:42vw;
+      min-height:38px;
+      padding:7px 28px 7px 9px;
+      font-size:.82rem;
+    }
+    button#menuToggle{min-width:38px; min-height:38px;}
+    main h1{font-size:clamp(1.75rem, 9vw, 2.2rem);}
+    section h2{align-items:flex-start;}
+    .cancel-path .arrow{margin:0 4px;}
+  }
+  @media (max-width:360px){
+    header.top{padding:13px 12px;}
+    .shell{padding-left:14px; padding-right:14px;}
+    footer{padding-left:14px; padding-right:14px;}
+    header.top .title{font-size:.9rem;}
+    #languageSelect{max-width:45vw; font-size:.78rem;}
+  }
+
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="title">Free<span>Calculator</span></div>
+  <div class="top-actions">
+    <div class="language-wrap">
+      <select id="languageSelect" aria-label="Select language" title="Select language">
+      <option value="en">English</option>
+      <option value="zh-CN">简体中文</option>
+      <option value="ja">日本語</option>
+      <option value="ko">한국어</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="pt">Português</option>
+      <option value="es">Español</option>
+      <option value="ar">العربية</option>
+      <option value="it">Italiano</option>
+      <option value="vi">Tiếng Việt</option>
+      <option value="th">ไทย</option>
+      <option value="my">မြန်မာ</option>
+      <option value="id">Bahasa Indonesia</option>
+      </select>
+    </div>
+    <button id="menuToggle" aria-label="Toggle sections menu" aria-expanded="false">
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<div class="scrim" id="scrim"></div>
+
+<div class="shell">
+
+  <nav class="toc" id="toc" aria-label="Policy sections">
+    <p class="label">Contents</p>
+    <ol>
+      <li><a href="#s1" class="link">1. Information We Collect and Process</a></li>
+      <li><a href="#s2" class="link">2. How Information Is Used</a></li>
+      <li><a href="#s3" class="link">3. Free Tier Advertising</a></li>
+      <li><a href="#s4" class="link">4. Advertising Consent and Privacy Choices</a></li>
+      <li><a href="#s5" class="link">5. Third-Party Services</a></li>
+      <li><a href="#s6" class="link">6. Data Retention and Deletion</a></li>
+      <li><a href="#s7" class="link">7. Subscription Management and Cancellation</a></li>
+      <li><a href="#s8" class="link">8. Data Security</a></li>
+      <li><a href="#s9" class="link">9. Children's Privacy</a></li>
+      <li><a href="#s10" class="link">10. International Users</a></li>
+      <li><a href="#s11" class="link">11. Changes to This Privacy Policy</a></li>
+      <li><a href="#s12" class="link">12. Contact Us</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <h1>Privacy Policy - Free Calculator</h1>
+
+    <div class="meta">
+      <p style="margin:0 0 4px;"><strong>Developer:</strong> Blue Acid Labs</p>
+      <p style="margin:0 0 4px;"><strong>Last updated:</strong> September 25, 2026</p>
+      <p style="margin:0;"><strong>Contact:</strong> <a href="mailto:blue.acid.labs@gmail.com">blue.acid.labs@gmail.com</a></p>
+    </div>
+
+    <p class="intro">Blue Acid Labs operates the Free Calculator mobile application.</p>
+    <p class="intro">This Privacy Policy explains how information is processed when you use Free Calculator, including the use of Google Play Billing, Google AdMob, and Google's User Messaging Platform.</p>
+
+    <section id="s1">
+      <h2><span class="n">1.</span> Information We Collect and Process</h2>
+
+      <h3>Calculation and Utility Data</h3>
+      <p>Free Calculator performs mathematical, scientific, financial, salary, tip, loan, date, and other calculator functions directly on your device.</p>
+      <p>For both Free and Pro users, calculation inputs, results, preferences, and supported calculation history are processed and stored locally within the App and its device storage.</p>
+      <p>We do not operate a FreeCalc account system or a FreeCalc backend for storing your calculation information, and we do not sell, rent, or trade your calculation data.</p>
+
+      <h3>App Preferences</h3>
+      <p>Settings such as language and other supported application preferences may be stored locally on your device so that the App can remember your selections.</p>
+
+      <h3>Google Play Subscription Information</h3>
+      <p>Free Calculator offers an optional Pro subscription for $1.99 USD per month through Google Play.</p>
+      <p>Subscription purchases, payment processing, recurring billing, and subscription management are handled by Google Play Billing.</p>
+      <p>Free Calculator checks the Google Play purchase status available to the App to determine whether an active Pro entitlement exists.</p>
+      <p>We do not collect or store your credit card number, debit card number, or Google Play payment credentials.</p>
+      <p>Your Pro subscription remains subject to the pricing and terms presented by Google Play at the time of purchase.</p>
+    </section>
+
+    <section id="s2">
+      <h2><span class="n">2.</span> How Information Is Used</h2>
+      <p>Information processed by Free Calculator is used to:</p>
+      <ul>
+        <li>Perform calculations and utility functions requested by you.</li>
+        <li>Store supported calculation history and preferences locally on your device for both Free and Pro users.</li>
+        <li>Determine whether your Google Play Pro subscription is active.</li>
+        <li>Enable the ad-free Pro experience while an eligible subscription remains active.</li>
+        <li>Display advertisements to users of the Free tier.</li>
+        <li>Comply with applicable advertising privacy and consent requirements.</li>
+      </ul>
+    </section>
+
+    <section id="s3">
+      <h2><span class="n">3.</span> Free Tier Advertising</h2>
+      <p>The Free version of Free Calculator displays advertisements using Google AdMob, a service provided by Google LLC.</p>
+      <p>Google and its advertising partners may process information associated with advertising, which can include device or advertising identifiers, IP address, diagnostic information, interactions with advertisements, and other information permitted by your privacy choices and applicable law.</p>
+      <p>The exact information processed by Google may depend on your device, region, advertising settings, consent choices, and Google's services.</p>
+      <p>Free Calculator does not sell your calculation history or calculator inputs to advertisers.</p>
+      <p>Users with an active FreeCalc Pro subscription do not receive AdMob advertisements from the App while their eligible Pro entitlement remains active.</p>
+    </section>
+
+    <section id="s4">
+      <h2><span class="n">4.</span> Advertising Consent and Privacy Choices</h2>
+      <p>Free Calculator integrates Google's User Messaging Platform (UMP).</p>
+      <p>Where required, such as for users in regions subject to applicable European advertising privacy requirements, Google may present a consent or privacy message before advertising requests are made.</p>
+      <p>Free Calculator follows the advertising eligibility and consent information returned through Google's User Messaging Platform.</p>
+      <p>Where available, Free Calculator also provides an Ad Privacy Choices option that allows users to access Google's privacy-options interface and review or change applicable advertising privacy choices.</p>
+      <p>Users who previously provided consent may use the available privacy choices mechanism to revisit or revoke applicable consent.</p>
+      <p>For additional information about how Google processes information when its services are used in partner apps, please see Google's privacy information:</p>
+      <p>
+        <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">Google — How Google uses information from sites or apps that use its services</a><br>
+        <a href="https://business.safety.google/" target="_blank" rel="noopener">Google Business Data Responsibility</a>
+      </p>
+    </section>
+
+    <section id="s5">
+      <h2><span class="n">5.</span> Third-Party Services</h2>
+      <p>Free Calculator uses the following Google services:</p>
+
+      <h3>Google Play Billing — Google LLC</h3>
+      <p>Google Play processes subscription checkout, payment information, recurring billing, purchase confirmation, and subscription management.</p>
+
+      <h3>Google AdMob — Google LLC</h3>
+      <p>Google AdMob provides advertisements for users of the Free tier.</p>
+
+      <h3>Google User Messaging Platform — Google LLC</h3>
+      <p>Google UMP manages applicable advertising consent and privacy choices.</p>
+
+      <p>These third-party services process information according to their own terms and privacy policies.</p>
+      <p><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google Privacy Policy</a></p>
+    </section>
+
+    <section id="s6">
+      <h2><span class="n">6.</span> Data Retention and Deletion</h2>
+      <p>Free Calculator does not require you to create a FreeCalc account.</p>
+      <p>For both Free and Pro users, calculation information and supported preferences stored by Free Calculator remain locally on your device according to the App's functionality. This local storage is not a cloud backup or account-sync service.</p>
+      <p>You can remove locally stored information by using available clearing functions within Free Calculator or by clearing Free Calculator's application storage through Android device settings.</p>
+      <p>Uninstalling Free Calculator also removes App-specific locally stored information according to Android's normal application-storage behavior.</p>
+      <p>Information independently processed by Google through Google Play, AdMob, or related Google services is subject to Google's applicable retention and deletion practices.</p>
+    </section>
+
+    <section id="s7">
+      <h2><span class="n">7.</span> Google Play Subscription Management and Cancellation</h2>
+      <p>FreeCalc Pro subscriptions are managed through Google Play.</p>
+      <p>You may view, manage, or cancel your subscription through:</p>
+      <p class="cancel-path">Google Play<span class="arrow">→</span>Profile<span class="arrow">→</span>Payments & subscriptions<span class="arrow">→</span>Subscriptions</p>
+      <p>Cancellation is handled by Google Play. Cancelling a subscription normally prevents its next renewal while allowing eligible Pro benefits to remain available until the end of the already-paid subscription period.</p>
+      <p>After Google Play no longer reports an eligible Pro entitlement to Free Calculator, the App returns to the Free tier and advertisements may be displayed again.</p>
+    </section>
+
+    <section id="s8">
+      <h2><span class="n">8.</span> Data Security</h2>
+      <p>Calculation data handled locally by Free Calculator is stored within the application's device storage environment.</p>
+      <p>Google Play Billing and Google advertising services communicate using Google's platform services and their respective security mechanisms.</p>
+      <p>No method of electronic storage or transmission can be guaranteed to be completely secure, but we take reasonable measures appropriate to Free Calculator's architecture to minimize unnecessary collection and processing of information.</p>
+    </section>
+
+    <section id="s9">
+      <h2><span class="n">9.</span> Children's Privacy</h2>
+      <p>Free Calculator is a general-purpose calculator and utility application.</p>
+      <p>The App does not require account registration or personal information to perform its calculator functions.</p>
+      <p>We do not knowingly collect personal information directly from children through a FreeCalc account or backend service.</p>
+      <p>Advertising shown through Google AdMob is subject to the audience settings, privacy configuration, applicable laws, and Google policies configured for the App.</p>
+    </section>
+
+    <section id="s10">
+      <h2><span class="n">10.</span> International Users</h2>
+      <p>Free Calculator may be made available in multiple countries.</p>
+      <p>Third-party services such as Google Play and Google AdMob may process information in countries other than the country where you reside, subject to their applicable privacy practices and legal safeguards.</p>
+      <p>Where required, advertising consent and privacy choices are provided through Google's User Messaging Platform.</p>
+    </section>
+
+    <section id="s11">
+      <h2><span class="n">11.</span> Changes to This Privacy Policy</h2>
+      <p>We may update this Privacy Policy to reflect changes to Free Calculator, third-party services, legal requirements, or our privacy practices.</p>
+      <p>When the policy is updated, the Last updated date at the top of this page will be revised.</p>
+      <p>We encourage users to review this Privacy Policy periodically.</p>
+    </section>
+
+    <section id="s12" style="border-bottom:none;">
+      <h2><span class="n">12.</span> Contact Us</h2>
+      <p>If you have questions or concerns regarding this Privacy Policy or Free Calculator's privacy practices, contact:</p>
+      <p>Blue Acid Labs<br>Email: <a href="mailto:blue.acid.labs@gmail.com">blue.acid.labs@gmail.com</a></p>
+    </section>
+
+  </main>
+</div>
+
+<footer>
+  <span>© 2026 Blue Acid Labs. All rights reserved.</span>
+  <span>Free Calculator</span>
+</footer>
+
+<script>
+  /*
+   * Built-in translation system.
+   * SOURCE_TEXTS contains every translatable English phrase in the page.
+   * translations contains a matching phrase array for each supported language.
+   * Everything runs locally in this HTML file: no API, framework, or build step.
+   */
+  const SOURCE_TEXTS = [
+  "Contents",
+  "Privacy Policy - Free Calculator",
+  "Developer:",
+  "Last updated:",
+  "September 25, 2026",
+  "Contact:",
+  "Blue Acid Labs operates the Free Calculator mobile application.",
+  "This Privacy Policy explains how information is processed when you use Free Calculator, including the use of Google Play Billing, Google AdMob, and Google's User Messaging Platform.",
+  "Information We Collect and Process",
+  "Calculation and Utility Data",
+  "Free Calculator performs mathematical, scientific, financial, salary, tip, loan, date, and other calculator functions directly on your device.",
+  "For both Free and Pro users, calculation inputs, results, preferences, and supported calculation history are processed and stored locally within the App and its device storage.",
+  "We do not operate a FreeCalc account system or a FreeCalc backend for storing your calculation information, and we do not sell, rent, or trade your calculation data.",
+  "App Preferences",
+  "Settings such as language and other supported application preferences may be stored locally on your device so that the App can remember your selections.",
+  "Google Play Subscription Information",
+  "Free Calculator offers an optional Pro subscription for $1.99 USD per month through Google Play.",
+  "Subscription purchases, payment processing, recurring billing, and subscription management are handled by Google Play Billing.",
+  "Free Calculator checks the Google Play purchase status available to the App to determine whether an active Pro entitlement exists.",
+  "We do not collect or store your credit card number, debit card number, or Google Play payment credentials.",
+  "Your Pro subscription remains subject to the pricing and terms presented by Google Play at the time of purchase.",
+  "How Information Is Used",
+  "Information processed by Free Calculator is used to:",
+  "Perform calculations and utility functions requested by you.",
+  "Store supported calculation history and preferences locally on your device for both Free and Pro users.",
+  "Determine whether your Google Play Pro subscription is active.",
+  "Enable the ad-free Pro experience while an eligible subscription remains active.",
+  "Display advertisements to users of the Free tier.",
+  "Comply with applicable advertising privacy and consent requirements.",
+  "Free Tier Advertising",
+  "The Free version of Free Calculator displays advertisements using Google AdMob, a service provided by Google LLC.",
+  "Google and its advertising partners may process information associated with advertising, which can include device or advertising identifiers, IP address, diagnostic information, interactions with advertisements, and other information permitted by your privacy choices and applicable law.",
+  "The exact information processed by Google may depend on your device, region, advertising settings, consent choices, and Google's services.",
+  "Free Calculator does not sell your calculation history or calculator inputs to advertisers.",
+  "Users with an active FreeCalc Pro subscription do not receive AdMob advertisements from the App while their eligible Pro entitlement remains active.",
+  "Advertising Consent and Privacy Choices",
+  "Free Calculator integrates Google's User Messaging Platform (UMP).",
+  "Where required, such as for users in regions subject to applicable European advertising privacy requirements, Google may present a consent or privacy message before advertising requests are made.",
+  "Free Calculator follows the advertising eligibility and consent information returned through Google's User Messaging Platform.",
+  "Where available, Free Calculator also provides an Ad Privacy Choices option that allows users to access Google's privacy-options interface and review or change applicable advertising privacy choices.",
+  "Users who previously provided consent may use the available privacy choices mechanism to revisit or revoke applicable consent.",
+  "For additional information about how Google processes information when its services are used in partner apps, please see Google's privacy information:",
+  "Google — How Google uses information from sites or apps that use its services",
+  "Google Business Data Responsibility",
+  "Third-Party Services",
+  "Free Calculator uses the following Google services:",
+  "Google Play Billing — Google LLC",
+  "Google Play processes subscription checkout, payment information, recurring billing, purchase confirmation, and subscription management.",
+  "Google AdMob — Google LLC",
+  "Google AdMob provides advertisements for users of the Free tier.",
+  "Google User Messaging Platform — Google LLC",
+  "Google UMP manages applicable advertising consent and privacy choices.",
+  "These third-party services process information according to their own terms and privacy policies.",
+  "Google Privacy Policy",
+  "Data Retention and Deletion",
+  "Free Calculator does not require you to create a FreeCalc account.",
+  "For both Free and Pro users, calculation information and supported preferences stored by Free Calculator remain locally on your device according to the App's functionality. This local storage is not a cloud backup or account-sync service.",
+  "You can remove locally stored information by using available clearing functions within Free Calculator or by clearing Free Calculator's application storage through Android device settings.",
+  "Uninstalling Free Calculator also removes App-specific locally stored information according to Android's normal application-storage behavior.",
+  "Information independently processed by Google through Google Play, AdMob, or related Google services is subject to Google's applicable retention and deletion practices.",
+  "Google Play Subscription Management and Cancellation",
+  "FreeCalc Pro subscriptions are managed through Google Play.",
+  "You may view, manage, or cancel your subscription through:",
+  "Profile",
+  "Payments & subscriptions",
+  "Subscriptions",
+  "Cancellation is handled by Google Play. Cancelling a subscription normally prevents its next renewal while allowing eligible Pro benefits to remain available until the end of the already-paid subscription period.",
+  "After Google Play no longer reports an eligible Pro entitlement to Free Calculator, the App returns to the Free tier and advertisements may be displayed again.",
+  "Data Security",
+  "Calculation data handled locally by Free Calculator is stored within the application's device storage environment.",
+  "Google Play Billing and Google advertising services communicate using Google's platform services and their respective security mechanisms.",
+  "No method of electronic storage or transmission can be guaranteed to be completely secure, but we take reasonable measures appropriate to Free Calculator's architecture to minimize unnecessary collection and processing of information.",
+  "Children's Privacy",
+  "Free Calculator is a general-purpose calculator and utility application.",
+  "The App does not require account registration or personal information to perform its calculator functions.",
+  "We do not knowingly collect personal information directly from children through a FreeCalc account or backend service.",
+  "Advertising shown through Google AdMob is subject to the audience settings, privacy configuration, applicable laws, and Google policies configured for the App.",
+  "International Users",
+  "Free Calculator may be made available in multiple countries.",
+  "Third-party services such as Google Play and Google AdMob may process information in countries other than the country where you reside, subject to their applicable privacy practices and legal safeguards.",
+  "Where required, advertising consent and privacy choices are provided through Google's User Messaging Platform.",
+  "Changes to This Privacy Policy",
+  "We may update this Privacy Policy to reflect changes to Free Calculator, third-party services, legal requirements, or our privacy practices.",
+  "When the policy is updated, the Last updated date at the top of this page will be revised.",
+  "We encourage users to review this Privacy Policy periodically.",
+  "Contact Us",
+  "If you have questions or concerns regarding this Privacy Policy or Free Calculator's privacy practices, contact:",
+  "Email:",
+  "© 2026 Blue Acid Labs. All rights reserved.",
+  "Toggle sections menu",
+  "Policy sections"
+];
+  const translations = {
+  "en": [
+    "Contents",
+    "Privacy Policy - Free Calculator",
+    "Developer:",
+    "Last updated:",
+    "September 25, 2026",
+    "Contact:",
+    "Blue Acid Labs operates the Free Calculator mobile application.",
+    "This Privacy Policy explains how information is processed when you use Free Calculator, including the use of Google Play Billing, Google AdMob, and Google's User Messaging Platform.",
+    "Information We Collect and Process",
+    "Calculation and Utility Data",
+    "Free Calculator performs mathematical, scientific, financial, salary, tip, loan, date, and other calculator functions directly on your device.",
+    "For both Free and Pro users, calculation inputs, results, preferences, and supported calculation history are processed and stored locally within the App and its device storage.",
+    "We do not operate a FreeCalc account system or a FreeCalc backend for storing your calculation information, and we do not sell, rent, or trade your calculation data.",
+    "App Preferences",
+    "Settings such as language and other supported application preferences may be stored locally on your device so that the App can remember your selections.",
+    "Google Play Subscription Information",
+    "Free Calculator offers an optional Pro subscription for $1.99 USD per month through Google Play.",
+    "Subscription purchases, payment processing, recurring billing, and subscription management are handled by Google Play Billing.",
+    "Free Calculator checks the Google Play purchase status available to the App to determine whether an active Pro entitlement exists.",
+    "We do not collect or store your credit card number, debit card number, or Google Play payment credentials.",
+    "Your Pro subscription remains subject to the pricing and terms presented by Google Play at the time of purchase.",
+    "How Information Is Used",
+    "Information processed by Free Calculator is used to:",
+    "Perform calculations and utility functions requested by you.",
+    "Store supported calculation history and preferences locally on your device for both Free and Pro users.",
+    "Determine whether your Google Play Pro subscription is active.",
+    "Enable the ad-free Pro experience while an eligible subscription remains active.",
+    "Display advertisements to users of the Free tier.",
+    "Comply with applicable advertising privacy and consent requirements.",
+    "Free Tier Advertising",
+    "The Free version of Free Calculator displays advertisements using Google AdMob, a service provided by Google LLC.",
+    "Google and its advertising partners may process information associated with advertising, which can include device or advertising identifiers, IP address, diagnostic information, interactions with advertisements, and other information permitted by your privacy choices and applicable law.",
+    "The exact information processed by Google may depend on your device, region, advertising settings, consent choices, and Google's services.",
+    "Free Calculator does not sell your calculation history or calculator inputs to advertisers.",
+    "Users with an active FreeCalc Pro subscription do not receive AdMob advertisements from the App while their eligible Pro entitlement remains active.",
+    "Advertising Consent and Privacy Choices",
+    "Free Calculator integrates Google's User Messaging Platform (UMP).",
+    "Where required, such as for users in regions subject to applicable European advertising privacy requirements, Google may present a consent or privacy message before advertising requests are made.",
+    "Free Calculator follows the advertising eligibility and consent information returned through Google's User Messaging Platform.",
+    "Where available, Free Calculator also provides an Ad Privacy Choices option that allows users to access Google's privacy-options interface and review or change applicable advertising privacy choices.",
+    "Users who previously provided consent may use the available privacy choices mechanism to revisit or revoke applicable consent.",
+    "For additional information about how Google processes information when its services are used in partner apps, please see Google's privacy information:",
+    "Google — How Google uses information from sites or apps that use its services",
+    "Google Business Data Responsibility",
+    "Third-Party Services",
+    "Free Calculator uses the following Google services:",
+    "Google Play Billing — Google LLC",
+    "Google Play processes subscription checkout, payment information, recurring billing, purchase confirmation, and subscription management.",
+    "Google AdMob — Google LLC",
+    "Google AdMob provides advertisements for users of the Free tier.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP manages applicable advertising consent and privacy choices.",
+    "These third-party services process information according to their own terms and privacy policies.",
+    "Google Privacy Policy",
+    "Data Retention and Deletion",
+    "Free Calculator does not require you to create a FreeCalc account.",
+    "For both Free and Pro users, calculation information and supported preferences stored by Free Calculator remain locally on your device according to the App's functionality. This local storage is not a cloud backup or account-sync service.",
+    "You can remove locally stored information by using available clearing functions within Free Calculator or by clearing Free Calculator's application storage through Android device settings.",
+    "Uninstalling Free Calculator also removes App-specific locally stored information according to Android's normal application-storage behavior.",
+    "Information independently processed by Google through Google Play, AdMob, or related Google services is subject to Google's applicable retention and deletion practices.",
+    "Google Play Subscription Management and Cancellation",
+    "FreeCalc Pro subscriptions are managed through Google Play.",
+    "You may view, manage, or cancel your subscription through:",
+    "Profile",
+    "Payments & subscriptions",
+    "Subscriptions",
+    "Cancellation is handled by Google Play. Cancelling a subscription normally prevents its next renewal while allowing eligible Pro benefits to remain available until the end of the already-paid subscription period.",
+    "After Google Play no longer reports an eligible Pro entitlement to Free Calculator, the App returns to the Free tier and advertisements may be displayed again.",
+    "Data Security",
+    "Calculation data handled locally by Free Calculator is stored within the application's device storage environment.",
+    "Google Play Billing and Google advertising services communicate using Google's platform services and their respective security mechanisms.",
+    "No method of electronic storage or transmission can be guaranteed to be completely secure, but we take reasonable measures appropriate to Free Calculator's architecture to minimize unnecessary collection and processing of information.",
+    "Children's Privacy",
+    "Free Calculator is a general-purpose calculator and utility application.",
+    "The App does not require account registration or personal information to perform its calculator functions.",
+    "We do not knowingly collect personal information directly from children through a FreeCalc account or backend service.",
+    "Advertising shown through Google AdMob is subject to the audience settings, privacy configuration, applicable laws, and Google policies configured for the App.",
+    "International Users",
+    "Free Calculator may be made available in multiple countries.",
+    "Third-party services such as Google Play and Google AdMob may process information in countries other than the country where you reside, subject to their applicable privacy practices and legal safeguards.",
+    "Where required, advertising consent and privacy choices are provided through Google's User Messaging Platform.",
+    "Changes to This Privacy Policy",
+    "We may update this Privacy Policy to reflect changes to Free Calculator, third-party services, legal requirements, or our privacy practices.",
+    "When the policy is updated, the Last updated date at the top of this page will be revised.",
+    "We encourage users to review this Privacy Policy periodically.",
+    "Contact Us",
+    "If you have questions or concerns regarding this Privacy Policy or Free Calculator's privacy practices, contact:",
+    "Email:",
+    "© 2026 Blue Acid Labs. All rights reserved.",
+    "Toggle sections menu",
+    "Policy sections"
+  ],
+  "zh-CN": [
+    "目录",
+    "隐私政策 - Free Calculator",
+    "开发者：",
+    "最后更新：",
+    "2026年9月",
+    "联系：",
+    "Blue Acid Labs 运营 Free Calculator 移动应用。",
+    "本隐私政策说明您使用 Free Calculator 时信息的处理方式，包括 Google Play Billing、Google AdMob 和 Google User Messaging Platform 的使用。",
+    "我们收集和处理的信息",
+    "计算与实用工具数据",
+    "Free Calculator 会直接在您的设备上执行数学、科学、财务、工资、小费、贷款、日期及其他计算功能。",
+    "计算输入、结果、偏好设置以及受支持的计算历史记录均在应用及设备存储中本地处理。",
+    "我们不运营用于存储您计算信息的 FreeCalc 账户系统或 FreeCalc 后端，也不会出售、出租或交易您的计算数据。",
+    "应用偏好设置",
+    "语言等设置及其他受支持的应用偏好可存储在您的设备本地，以便应用记住您的选择。",
+    "Google Play 订阅信息",
+    "Free Calculator 通过 Google Play 提供可选的 Pro 订阅，价格为每月 1.99 美元。",
+    "订阅购买、付款处理、定期扣费和订阅管理由 Google Play Billing 处理。",
+    "Free Calculator 会检查应用可获得的 Google Play 购买状态，以确定是否存在有效的 Pro 权益。",
+    "我们不会收集或存储您的信用卡号、借记卡号或 Google Play 支付凭据。",
+    "您的 Pro 订阅仍受购买时 Google Play 显示的价格和条款约束。",
+    "信息的使用方式",
+    "Free Calculator 处理的信息用于：",
+    "执行您请求的计算和实用工具功能。",
+    "在您的设备本地存储受支持的计算历史记录和偏好设置。",
+    "确定您的 Google Play Pro 订阅是否有效。",
+    "在符合条件的订阅有效期间启用无广告 Pro 体验。",
+    "向免费版用户显示广告。",
+    "遵守适用的广告隐私和同意要求。",
+    "免费版广告",
+    "Free Calculator 免费版使用 Google LLC 提供的 Google AdMob 显示广告。",
+    "Google 及其广告合作伙伴可能处理与广告相关的信息，包括设备或广告标识符、IP 地址、诊断信息、与广告的互动，以及您的隐私选择和适用法律允许的其他信息。",
+    "Google 实际处理的信息可能取决于您的设备、地区、广告设置、同意选择以及 Google 的服务。",
+    "Free Calculator 不会向广告商出售您的计算历史记录或计算器输入。",
+    "拥有有效 FreeCalc Pro 订阅的用户，在符合条件的 Pro 权益有效期间不会收到应用中的 AdMob 广告。",
+    "广告同意与隐私选择",
+    "Free Calculator 集成了 Google User Messaging Platform (UMP)。",
+    "在需要时，例如适用欧洲广告隐私要求的地区，Google 可能会在发出广告请求前显示同意或隐私消息。",
+    "Free Calculator 会遵循 Google User Messaging Platform 返回的广告资格和同意信息。",
+    "在可用情况下，Free Calculator 还提供“广告隐私选择”选项，让用户访问 Google 的隐私选项界面并查看或更改适用的广告隐私选择。",
+    "之前已提供同意的用户可使用可用的隐私选择机制重新查看或撤回适用的同意。",
+    "如需了解 Google 在合作伙伴应用中使用其服务时如何处理信息，请参阅 Google 的隐私信息：",
+    "Google — Google 如何使用来自使用其服务的网站或应用的信息",
+    "Google 商业数据责任",
+    "第三方服务",
+    "Free Calculator 使用以下 Google 服务：",
+    "Google Play Billing — Google LLC",
+    "Google Play 处理订阅结账、付款信息、定期扣费、购买确认和订阅管理。",
+    "Google AdMob — Google LLC",
+    "Google AdMob 为免费版用户提供广告。",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP 管理适用的广告同意和隐私选择。",
+    "这些第三方服务按照其各自的条款和隐私政策处理信息。",
+    "Google 隐私政策",
+    "数据保留与删除",
+    "Free Calculator 不要求您创建 FreeCalc 账户。",
+    "Free Calculator 存储的计算信息和受支持偏好会根据应用功能保留在您的设备本地。",
+    "您可以使用 Free Calculator 中可用的清除功能，或通过 Android 设备设置清除 Free Calculator 的应用存储来删除本地信息。",
+    "卸载 Free Calculator 也会按照 Android 正常的应用存储机制删除应用专属的本地信息。",
+    "由 Google 通过 Google Play、AdMob 或相关 Google 服务独立处理的信息，受 Google 适用的数据保留和删除规则约束。",
+    "Google Play 订阅管理与取消",
+    "FreeCalc Pro 订阅通过 Google Play 管理。",
+    "您可以通过以下路径查看、管理或取消订阅：",
+    "个人资料",
+    "付款和订阅",
+    "订阅",
+    "取消由 Google Play 处理。取消订阅通常会阻止下一次续费，同时允许符合条件的 Pro 权益持续到已付费订阅期结束。",
+    "当 Google Play 不再向 Free Calculator 报告符合条件的 Pro 权益后，应用将恢复为免费版，并可能再次显示广告。",
+    "数据安全",
+    "Free Calculator 本地处理的计算数据存储在应用的设备存储环境中。",
+    "Google Play Billing 和 Google 广告服务通过 Google 的平台服务及各自的安全机制进行通信。",
+    "任何电子存储或传输方式都无法保证绝对安全，但我们会采取与 Free Calculator 架构相适应的合理措施，尽量减少不必要的信息收集和处理。",
+    "儿童隐私",
+    "Free Calculator 是一款通用计算器和实用工具应用。",
+    "应用执行计算功能无需账户注册或个人信息。",
+    "我们不会通过 FreeCalc 账户或后端服务故意直接收集儿童的个人信息。",
+    "通过 Google AdMob 展示的广告受为本应用配置的受众设置、隐私配置、适用法律和 Google 政策约束。",
+    "国际用户",
+    "Free Calculator 可能在多个国家/地区提供。",
+    "Google Play 和 Google AdMob 等第三方服务可能在您居住国以外的国家/地区处理信息，并受其适用的隐私做法和法律保障约束。",
+    "在需要时，广告同意和隐私选择通过 Google User Messaging Platform 提供。",
+    "本隐私政策的变更",
+    "我们可能更新本隐私政策，以反映 Free Calculator、第三方服务、法律要求或我们的隐私做法的变化。",
+    "政策更新时，本页顶部的“最后更新”日期将相应修改。",
+    "我们建议用户定期查看本隐私政策。",
+    "联系我们",
+    "如果您对本隐私政策或 Free Calculator 的隐私做法有任何问题或疑虑，请联系：",
+    "电子邮件：",
+    "© 2026 Blue Acid Labs。保留所有权利。",
+    "切换章节菜单",
+    "政策章节"
+  ],
+  "ja": [
+    "目次",
+    "プライバシーポリシー - Free Calculator",
+    "開発者：",
+    "最終更新：",
+    "2026年9月",
+    "連絡先：",
+    "Blue Acid Labs は Free Calculator モバイルアプリを運営しています。",
+    "本プライバシーポリシーは、Free Calculator の利用時に、Google Play Billing、Google AdMob、Google User Messaging Platform の利用を含め、情報がどのように処理されるかを説明します。",
+    "収集および処理する情報",
+    "計算・ユーティリティデータ",
+    "Free Calculator は、数学、科学、金融、給与、チップ、ローン、日付、その他の計算機能を端末上で直接実行します。",
+    "計算入力、結果、設定、および対応する計算履歴は、アプリと端末ストレージ内でローカルに処理されます。",
+    "当社は計算情報を保存する FreeCalc アカウントシステムや FreeCalc バックエンドを運営しておらず、計算データを販売、貸与、取引することもありません。",
+    "アプリ設定",
+    "言語などの設定やその他の対応するアプリ設定は、アプリが選択内容を記憶できるよう端末内に保存される場合があります。",
+    "Google Play サブスクリプション情報",
+    "Free Calculator では、Google Play を通じて月額 1.99 米ドルの任意の Pro サブスクリプションを提供しています。",
+    "サブスクリプションの購入、支払い処理、継続課金、サブスクリプション管理は Google Play Billing により処理されます。",
+    "Free Calculator は、アプリが利用できる Google Play の購入状態を確認し、有効な Pro 利用権があるかどうかを判定します。",
+    "当社は、クレジットカード番号、デビットカード番号、Google Play の支払い認証情報を収集または保存しません。",
+    "Pro サブスクリプションには、購入時に Google Play が提示する価格と条件が適用されます。",
+    "情報の利用方法",
+    "Free Calculator で処理される情報は次の目的で使用されます：",
+    "ユーザーが要求した計算およびユーティリティ機能を実行するため。",
+    "対応する計算履歴と設定を端末内に保存するため。",
+    "Google Play Pro サブスクリプションが有効かどうかを確認するため。",
+    "対象となるサブスクリプションが有効な間、広告なしの Pro 体験を提供するため。",
+    "無料プランのユーザーに広告を表示するため。",
+    "適用される広告プライバシーおよび同意要件を遵守するため。",
+    "無料プランの広告",
+    "Free Calculator の無料版では、Google LLC が提供する Google AdMob を使用して広告を表示します。",
+    "Google およびその広告パートナーは、端末または広告識別子、IP アドレス、診断情報、広告とのやり取り、およびユーザーのプライバシー設定と適用法で許可されるその他の情報など、広告に関連する情報を処理する場合があります。",
+    "Google が処理する具体的な情報は、端末、地域、広告設定、同意の選択、Google のサービスによって異なる場合があります。",
+    "Free Calculator は、計算履歴や計算機への入力を広告主に販売しません。",
+    "有効な FreeCalc Pro サブスクリプションを持つユーザーには、対象となる Pro 利用権が有効な間、アプリから AdMob 広告は表示されません。",
+    "広告同意とプライバシー設定",
+    "Free Calculator は Google User Messaging Platform (UMP) を統合しています。",
+    "欧州の広告プライバシー要件が適用される地域など、必要な場合には、広告リクエストを行う前に Google が同意またはプライバシーに関するメッセージを表示することがあります。",
+    "Free Calculator は、Google User Messaging Platform から返される広告配信資格と同意情報に従います。",
+    "利用可能な場合、Free Calculator は「広告プライバシー設定」オプションも提供し、ユーザーは Google のプライバシー設定画面にアクセスして、該当する広告プライバシー設定を確認または変更できます。",
+    "以前に同意したユーザーは、利用可能なプライバシー設定機能を使って、該当する同意を見直したり撤回したりできます。",
+    "Google のサービスがパートナーアプリで使用される際に Google が情報をどのように処理するかについては、Google のプライバシー情報をご覧ください：",
+    "Google — Google のサービスを利用するサイトやアプリからの情報の利用方法",
+    "Google のビジネスデータ責任",
+    "第三者サービス",
+    "Free Calculator は以下の Google サービスを使用します：",
+    "Google Play Billing — Google LLC",
+    "Google Play は、サブスクリプションの購入手続き、支払い情報、継続課金、購入確認、サブスクリプション管理を処理します。",
+    "Google AdMob — Google LLC",
+    "Google AdMob は無料プランのユーザー向けに広告を提供します。",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP は、該当する広告同意とプライバシー設定を管理します。",
+    "これらの第三者サービスは、それぞれの利用規約およびプライバシーポリシーに従って情報を処理します。",
+    "Google プライバシーポリシー",
+    "データの保持と削除",
+    "Free Calculator の利用に FreeCalc アカウントの作成は必要ありません。",
+    "Free Calculator が保存する計算情報と対応する設定は、アプリの機能に従い端末内にローカル保存されます。",
+    "Free Calculator 内の利用可能な消去機能を使用するか、Android 端末の設定から Free Calculator のアプリストレージを消去することで、ローカル保存情報を削除できます。",
+    "Free Calculator をアンインストールすると、Android の通常のアプリストレージ動作に従って、アプリ固有のローカル保存情報も削除されます。",
+    "Google Play、AdMob、または関連する Google サービスを通じて Google が独自に処理する情報には、Google の該当する保持および削除方針が適用されます。",
+    "Google Play サブスクリプションの管理と解約",
+    "FreeCalc Pro サブスクリプションは Google Play で管理されます。",
+    "サブスクリプションの確認、管理、解約は次の手順で行えます：",
+    "プロフィール",
+    "お支払いと定期購入",
+    "定期購入",
+    "解約は Google Play により処理されます。通常、サブスクリプションを解約すると次回の更新は停止されますが、すでに支払い済みの期間が終了するまでは対象となる Pro 特典を利用できます。",
+    "Google Play が Free Calculator に対して対象となる Pro 利用権を報告しなくなると、アプリは無料プランに戻り、広告が再び表示される場合があります。",
+    "データセキュリティ",
+    "Free Calculator がローカルで処理する計算データは、アプリの端末ストレージ環境内に保存されます。",
+    "Google Play Billing と Google の広告サービスは、Google のプラットフォームサービスおよび各サービスのセキュリティ機構を使用して通信します。",
+    "電子的な保存や送信方法に完全な安全性を保証することはできませんが、Free Calculator の構成に適した合理的な対策を講じ、不要な情報の収集と処理を最小限に抑えています。",
+    "子どものプライバシー",
+    "Free Calculator は一般用途の計算機・ユーティリティアプリです。",
+    "アプリの計算機能を利用するために、アカウント登録や個人情報は必要ありません。",
+    "当社は、FreeCalc アカウントやバックエンドサービスを通じて、子どもから個人情報を故意に直接収集することはありません。",
+    "Google AdMob を通じて表示される広告は、本アプリに設定された対象ユーザー設定、プライバシー設定、適用法、および Google のポリシーの対象となります。",
+    "海外ユーザー",
+    "Free Calculator は複数の国で提供される場合があります。",
+    "Google Play や Google AdMob などの第三者サービスは、適用されるプライバシー慣行と法的保護措置に従い、ユーザーの居住国以外の国で情報を処理する場合があります。",
+    "必要な場合、広告同意とプライバシー設定は Google User Messaging Platform を通じて提供されます。",
+    "本プライバシーポリシーの変更",
+    "当社は、Free Calculator、第三者サービス、法的要件、または当社のプライバシー慣行の変更を反映するため、本プライバシーポリシーを更新することがあります。",
+    "ポリシーを更新した場合、このページ上部の「最終更新」日を変更します。",
+    "ユーザーには、本プライバシーポリシーを定期的に確認することを推奨します。",
+    "お問い合わせ",
+    "本プライバシーポリシーまたは Free Calculator のプライバシー慣行についてご質問や懸念がある場合は、以下までご連絡ください：",
+    "メール：",
+    "© 2026 Blue Acid Labs. 無断転載を禁じます。",
+    "セクションメニューを切り替える",
+    "ポリシーのセクション"
+  ],
+  "ko": [
+    "목차",
+    "개인정보처리방침 - Free Calculator",
+    "개발자:",
+    "최종 업데이트:",
+    "2026년 9월",
+    "연락처:",
+    "Blue Acid Labs는 Free Calculator 모바일 애플리케이션을 운영합니다.",
+    "본 개인정보처리방침은 Google Play Billing, Google AdMob 및 Google User Messaging Platform 사용을 포함하여 Free Calculator 이용 시 정보가 어떻게 처리되는지 설명합니다.",
+    "수집 및 처리하는 정보",
+    "계산 및 유틸리티 데이터",
+    "Free Calculator는 수학, 과학, 금융, 급여, 팁, 대출, 날짜 및 기타 계산 기능을 기기에서 직접 수행합니다.",
+    "계산 입력값, 결과, 환경설정 및 지원되는 계산 기록은 앱과 기기 저장공간에서 로컬로 처리됩니다.",
+    "당사는 계산 정보를 저장하기 위한 FreeCalc 계정 시스템이나 FreeCalc 백엔드를 운영하지 않으며, 계산 데이터를 판매, 임대 또는 거래하지 않습니다.",
+    "앱 환경설정",
+    "언어 및 기타 지원되는 앱 설정과 같은 환경설정은 앱이 사용자의 선택을 기억할 수 있도록 기기에 로컬로 저장될 수 있습니다.",
+    "Google Play 구독 정보",
+    "Free Calculator는 Google Play을 통해 월 1.99 USD의 선택형 Pro 구독을 제공합니다.",
+    "구독 구매, 결제 처리, 정기 결제 및 구독 관리는 Google Play Billing에서 처리합니다.",
+    "Free Calculator는 앱에서 사용할 수 있는 Google Play 구매 상태를 확인하여 활성 Pro 권한이 있는지 판단합니다.",
+    "당사는 신용카드 번호, 직불카드 번호 또는 Google Play 결제 자격 증명을 수집하거나 저장하지 않습니다.",
+    "Pro 구독에는 구매 당시 Google Play에 표시된 가격과 조건이 적용됩니다.",
+    "정보 이용 방법",
+    "Free Calculator에서 처리되는 정보는 다음 목적에 사용됩니다:",
+    "사용자가 요청한 계산 및 유틸리티 기능을 수행합니다.",
+    "지원되는 계산 기록과 환경설정을 기기에 로컬로 저장합니다.",
+    "Google Play Pro 구독이 활성 상태인지 확인합니다.",
+    "적격 구독이 활성 상태인 동안 광고 없는 Pro 환경을 제공합니다.",
+    "무료 등급 사용자에게 광고를 표시합니다.",
+    "적용되는 광고 개인정보 보호 및 동의 요구사항을 준수합니다.",
+    "무료 등급 광고",
+    "Free Calculator 무료 버전은 Google LLC에서 제공하는 Google AdMob을 사용하여 광고를 표시합니다.",
+    "Google 및 광고 파트너는 기기 또는 광고 식별자, IP 주소, 진단 정보, 광고 상호작용 및 사용자의 개인정보 선택과 관련 법률에서 허용하는 기타 정보를 포함하여 광고 관련 정보를 처리할 수 있습니다.",
+    "Google이 실제로 처리하는 정보는 기기, 지역, 광고 설정, 동의 선택 및 Google 서비스에 따라 달라질 수 있습니다.",
+    "Free Calculator는 계산 기록이나 계산기 입력값을 광고주에게 판매하지 않습니다.",
+    "활성 FreeCalc Pro 구독 사용자는 적격 Pro 권한이 활성 상태인 동안 앱에서 AdMob 광고를 받지 않습니다.",
+    "광고 동의 및 개인정보 선택",
+    "Free Calculator는 Google User Messaging Platform(UMP)을 통합합니다.",
+    "유럽 광고 개인정보 보호 요건이 적용되는 지역 등 필요한 경우, Google은 광고 요청 전에 동의 또는 개인정보 보호 메시지를 표시할 수 있습니다.",
+    "Free Calculator는 Google User Messaging Platform에서 반환되는 광고 자격 및 동의 정보를 따릅니다.",
+    "사용 가능한 경우 Free Calculator는 사용자가 Google의 개인정보 옵션 인터페이스에 접근하여 해당 광고 개인정보 선택을 검토하거나 변경할 수 있는 광고 개인정보 선택 옵션도 제공합니다.",
+    "이전에 동의한 사용자는 사용 가능한 개인정보 선택 기능을 통해 해당 동의를 다시 검토하거나 철회할 수 있습니다.",
+    "Google 서비스가 파트너 앱에서 사용될 때 Google이 정보를 처리하는 방식에 대한 자세한 내용은 Google의 개인정보 정보를 참조하세요:",
+    "Google — 서비스를 사용하는 사이트 또는 앱의 정보를 Google이 사용하는 방법",
+    "Google 비즈니스 데이터 책임",
+    "제3자 서비스",
+    "Free Calculator는 다음 Google 서비스를 사용합니다:",
+    "Google Play Billing — Google LLC",
+    "Google Play은 구독 결제, 결제 정보, 정기 결제, 구매 확인 및 구독 관리를 처리합니다.",
+    "Google AdMob — Google LLC",
+    "Google AdMob은 무료 등급 사용자에게 광고를 제공합니다.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP는 적용되는 광고 동의 및 개인정보 선택을 관리합니다.",
+    "이러한 제3자 서비스는 각자의 약관 및 개인정보처리방침에 따라 정보를 처리합니다.",
+    "Google 개인정보처리방침",
+    "데이터 보관 및 삭제",
+    "Free Calculator는 FreeCalc 계정 생성을 요구하지 않습니다.",
+    "Free Calculator가 저장하는 계산 정보와 지원되는 환경설정은 앱 기능에 따라 기기에 로컬로 유지됩니다.",
+    "Free Calculator의 사용 가능한 삭제 기능을 사용하거나 Android 기기 설정에서 Free Calculator 앱 저장공간을 삭제하여 로컬 저장 정보를 제거할 수 있습니다.",
+    "Free Calculator를 제거하면 Android의 일반적인 앱 저장 방식에 따라 앱별 로컬 저장 정보도 삭제됩니다.",
+    "Google Play, AdMob 또는 관련 Google 서비스를 통해 Google이 독립적으로 처리하는 정보에는 Google의 해당 보관 및 삭제 방침이 적용됩니다.",
+    "Google Play 구독 관리 및 취소",
+    "FreeCalc Pro 구독은 Google Play에서 관리됩니다.",
+    "다음 경로에서 구독을 확인, 관리 또는 취소할 수 있습니다:",
+    "프로필",
+    "결제 및 구독",
+    "구독",
+    "취소는 Google Play에서 처리합니다. 구독을 취소하면 일반적으로 다음 갱신이 중단되며, 이미 결제한 구독 기간이 끝날 때까지 적격 Pro 혜택을 계속 이용할 수 있습니다.",
+    "Google Play이 더 이상 Free Calculator에 적격 Pro 권한을 보고하지 않으면 앱은 무료 등급으로 돌아가며 광고가 다시 표시될 수 있습니다.",
+    "데이터 보안",
+    "Free Calculator에서 로컬로 처리되는 계산 데이터는 앱의 기기 저장 환경에 저장됩니다.",
+    "Google Play Billing과 Google 광고 서비스는 Google 플랫폼 서비스 및 각 보안 메커니즘을 사용하여 통신합니다.",
+    "어떠한 전자 저장 또는 전송 방식도 완전한 보안을 보장할 수는 없지만, 당사는 Free Calculator의 구조에 적합한 합리적인 조치를 취해 불필요한 정보 수집과 처리를 최소화합니다.",
+    "아동 개인정보 보호",
+    "Free Calculator는 범용 계산기 및 유틸리티 앱입니다.",
+    "앱의 계산 기능을 사용하기 위해 계정 등록이나 개인정보가 필요하지 않습니다.",
+    "당사는 FreeCalc 계정 또는 백엔드 서비스를 통해 아동의 개인정보를 고의로 직접 수집하지 않습니다.",
+    "Google AdMob을 통해 표시되는 광고에는 앱에 설정된 대상 사용자 설정, 개인정보 구성, 관련 법률 및 Google 정책이 적용됩니다.",
+    "국제 사용자",
+    "Free Calculator는 여러 국가에서 제공될 수 있습니다.",
+    "Google Play 및 Google AdMob과 같은 제3자 서비스는 해당 개인정보 보호 관행 및 법적 보호조치에 따라 사용자가 거주하는 국가 외의 국가에서 정보를 처리할 수 있습니다.",
+    "필요한 경우 광고 동의 및 개인정보 선택은 Google User Messaging Platform을 통해 제공됩니다.",
+    "본 개인정보처리방침의 변경",
+    "당사는 Free Calculator, 제3자 서비스, 법적 요구사항 또는 개인정보 보호 관행의 변경을 반영하기 위해 본 개인정보처리방침을 업데이트할 수 있습니다.",
+    "정책이 업데이트되면 이 페이지 상단의 최종 업데이트 날짜가 변경됩니다.",
+    "사용자는 본 개인정보처리방침을 정기적으로 검토하시기 바랍니다.",
+    "문의하기",
+    "본 개인정보처리방침 또는 Free Calculator의 개인정보 보호 관행에 대한 질문이나 우려사항이 있으면 다음으로 연락하세요:",
+    "이메일:",
+    "© 2026 Blue Acid Labs. 모든 권리 보유.",
+    "섹션 메뉴 전환",
+    "정책 섹션"
+  ],
+  "de": [
+    "Inhalt",
+    "Datenschutzerklärung - Free Calculator",
+    "Entwickler:",
+    "Zuletzt aktualisiert:",
+    "September 25, 2026",
+    "Kontakt:",
+    "Blue Acid Labs betreibt die mobile Anwendung Free Calculator.",
+    "Diese Datenschutzerklärung erläutert, wie Informationen bei der Nutzung von Free Calculator verarbeitet werden, einschließlich der Nutzung von Google Play Billing, Google AdMob und Googles User Messaging Platform.",
+    "Von uns erfasste und verarbeitete Informationen",
+    "Berechnungs- und Nutzdaten",
+    "Free Calculator führt mathematische, wissenschaftliche, finanzielle, Gehalts-, Trinkgeld-, Kredit-, Datums- und andere Rechnerfunktionen direkt auf Ihrem Gerät aus.",
+    "Berechnungseingaben, Ergebnisse, Einstellungen und unterstützte Berechnungsverläufe werden lokal in der App und im Gerätespeicher verarbeitet.",
+    "Wir betreiben weder ein FreeCalc-Kontosystem noch ein FreeCalc-Backend zur Speicherung Ihrer Berechnungsinformationen und verkaufen, vermieten oder handeln Ihre Berechnungsdaten nicht.",
+    "App-Einstellungen",
+    "Einstellungen wie Sprache und andere unterstützte Anwendungseinstellungen können lokal auf Ihrem Gerät gespeichert werden, damit die App Ihre Auswahl speichern kann.",
+    "Google-Play-Abonnementinformationen",
+    "Free Calculator bietet über Google Play ein optionales Pro-Abonnement für 1,59 USD pro Monat an.",
+    "Abonnementkäufe, Zahlungsabwicklung, wiederkehrende Abrechnung und Abonnementverwaltung werden über Google Play Billing abgewickelt.",
+    "Free Calculator prüft den für die App verfügbaren Google-Play-Kaufstatus, um festzustellen, ob eine aktive Pro-Berechtigung besteht.",
+    "Wir erfassen oder speichern weder Ihre Kreditkartennummer noch Ihre Debitkartennummer oder Google-Play-Zahlungsdaten.",
+    "Für Ihr Pro-Abonnement gelten weiterhin die Preise und Bedingungen, die Google Play zum Zeitpunkt des Kaufs anzeigt.",
+    "Verwendung von Informationen",
+    "Von Free Calculator verarbeitete Informationen werden verwendet, um:",
+    "von Ihnen angeforderte Berechnungen und Hilfsfunktionen auszuführen.",
+    "unterstützte Berechnungsverläufe und Einstellungen lokal auf Ihrem Gerät zu speichern.",
+    "festzustellen, ob Ihr Google-Play-Pro-Abonnement aktiv ist.",
+    "die werbefreie Pro-Nutzung zu aktivieren, solange ein berechtigtes Abonnement aktiv ist.",
+    "Nutzern der kostenlosen Stufe Werbung anzuzeigen.",
+    "geltende Anforderungen an Werbedatenschutz und Einwilligung einzuhalten.",
+    "Werbung in der kostenlosen Stufe",
+    "Die kostenlose Version von Free Calculator zeigt Werbung über Google AdMob, einen Dienst von Google LLC.",
+    "Google und seine Werbepartner können werbebezogene Informationen verarbeiten, darunter Geräte- oder Werbekennungen, IP-Adresse, Diagnoseinformationen, Interaktionen mit Werbung und weitere Informationen, die durch Ihre Datenschutzeinstellungen und geltendes Recht erlaubt sind.",
+    "Welche Informationen Google genau verarbeitet, kann von Ihrem Gerät, Ihrer Region, Ihren Werbeeinstellungen, Einwilligungsentscheidungen und den Google-Diensten abhängen.",
+    "Free Calculator verkauft weder Ihren Berechnungsverlauf noch Ihre Rechnereingaben an Werbetreibende.",
+    "Nutzer mit einem aktiven FreeCalc-Pro-Abonnement erhalten keine AdMob-Werbung aus der App, solange ihre berechtigte Pro-Berechtigung aktiv ist.",
+    "Werbeeinwilligung und Datenschutzoptionen",
+    "Free Calculator integriert Googles User Messaging Platform (UMP).",
+    "Wo dies erforderlich ist, etwa in Regionen mit geltenden europäischen Werbedatenschutzanforderungen, kann Google vor dem Senden von Werbeanfragen eine Einwilligungs- oder Datenschutzmeldung anzeigen.",
+    "Free Calculator beachtet die über Googles User Messaging Platform zurückgegebenen Informationen zu Werbeberechtigung und Einwilligung.",
+    "Soweit verfügbar, bietet Free Calculator außerdem eine Option für Werbedatenschutz, über die Nutzer Googles Oberfläche für Datenschutzoptionen aufrufen und geltende Werbedatenschutzentscheidungen prüfen oder ändern können.",
+    "Nutzer, die zuvor eingewilligt haben, können die verfügbare Datenschutzoption nutzen, um ihre Einwilligung erneut zu prüfen oder zu widerrufen.",
+    "Weitere Informationen dazu, wie Google Informationen verarbeitet, wenn seine Dienste in Partner-Apps verwendet werden, finden Sie in den Datenschutzinformationen von Google:",
+    "Google — Wie Google Informationen von Websites oder Apps verwendet, die seine Dienste nutzen",
+    "Verantwortung für Geschäftsdaten bei Google",
+    "Dienste Dritter",
+    "Free Calculator verwendet die folgenden Google-Dienste:",
+    "Google Play Billing — Google LLC",
+    "Google Play verarbeitet den Abonnement-Checkout, Zahlungsinformationen, wiederkehrende Abrechnung, Kaufbestätigung und Abonnementverwaltung.",
+    "Google AdMob — Google LLC",
+    "Google AdMob stellt Werbung für Nutzer der kostenlosen Stufe bereit.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP verwaltet geltende Werbeeinwilligungen und Datenschutzoptionen.",
+    "Diese Dienste Dritter verarbeiten Informationen gemäß ihren eigenen Bedingungen und Datenschutzrichtlinien.",
+    "Google-Datenschutzerklärung",
+    "Datenaufbewahrung und Löschung",
+    "Für Free Calculator müssen Sie kein FreeCalc-Konto erstellen.",
+    "Von Free Calculator gespeicherte Berechnungsinformationen und unterstützte Einstellungen bleiben entsprechend der App-Funktionalität lokal auf Ihrem Gerät.",
+    "Sie können lokal gespeicherte Informationen über verfügbare Löschfunktionen in Free Calculator oder durch Löschen des App-Speichers von Free Calculator in den Android-Geräteeinstellungen entfernen.",
+    "Durch die Deinstallation von Free Calculator werden app-spezifische lokal gespeicherte Informationen gemäß dem normalen Speicherverhalten von Android ebenfalls entfernt.",
+    "Informationen, die Google unabhängig über Google Play, AdMob oder verwandte Google-Dienste verarbeitet, unterliegen den jeweiligen Aufbewahrungs- und Löschpraktiken von Google.",
+    "Verwaltung und Kündigung des Google-Play-Abonnements",
+    "FreeCalc-Pro-Abonnements werden über Google Play verwaltet.",
+    "Sie können Ihr Abonnement hier anzeigen, verwalten oder kündigen:",
+    "Profil",
+    "Zahlungen & Abos",
+    "Abos",
+    "Die Kündigung wird von Google Play verarbeitet. Eine Kündigung verhindert normalerweise die nächste Verlängerung, während berechtigte Pro-Vorteile bis zum Ende des bereits bezahlten Abonnementzeitraums verfügbar bleiben.",
+    "Sobald Google Play Free Calculator keine berechtigte Pro-Berechtigung mehr meldet, kehrt die App zur kostenlosen Stufe zurück und Werbung kann wieder angezeigt werden.",
+    "Datensicherheit",
+    "Lokal von Free Calculator verarbeitete Berechnungsdaten werden in der Gerätespeicherumgebung der Anwendung gespeichert.",
+    "Google Play Billing und Google-Werbedienste kommunizieren über Googles Plattformdienste und ihre jeweiligen Sicherheitsmechanismen.",
+    "Keine Methode der elektronischen Speicherung oder Übertragung kann vollständig sicher garantiert werden. Wir ergreifen jedoch angemessene, zur Architektur von Free Calculator passende Maßnahmen, um unnötige Erfassung und Verarbeitung von Informationen zu minimieren.",
+    "Datenschutz von Kindern",
+    "Free Calculator ist eine allgemeine Rechner- und Dienstprogrammanwendung.",
+    "Für die Rechnerfunktionen der App sind weder eine Kontoregistrierung noch personenbezogene Informationen erforderlich.",
+    "Wir erfassen nicht wissentlich personenbezogene Informationen direkt von Kindern über ein FreeCalc-Konto oder einen Backend-Dienst.",
+    "Über Google AdMob angezeigte Werbung unterliegt den für die App konfigurierten Zielgruppeneinstellungen, Datenschutzeinstellungen, geltenden Gesetzen und Google-Richtlinien.",
+    "Internationale Nutzer",
+    "Free Calculator kann in mehreren Ländern verfügbar gemacht werden.",
+    "Dienste Dritter wie Google Play und Google AdMob können Informationen in anderen Ländern als Ihrem Wohnsitzland verarbeiten, vorbehaltlich ihrer geltenden Datenschutzpraktiken und rechtlichen Schutzmaßnahmen.",
+    "Wo erforderlich, werden Werbeeinwilligung und Datenschutzoptionen über Googles User Messaging Platform bereitgestellt.",
+    "Änderungen dieser Datenschutzerklärung",
+    "Wir können diese Datenschutzerklärung aktualisieren, um Änderungen an Free Calculator, Diensten Dritter, gesetzlichen Anforderungen oder unseren Datenschutzpraktiken widerzuspiegeln.",
+    "Wenn die Richtlinie aktualisiert wird, wird das Datum „Zuletzt aktualisiert“ oben auf dieser Seite angepasst.",
+    "Wir empfehlen Nutzern, diese Datenschutzerklärung regelmäßig zu prüfen.",
+    "Kontakt",
+    "Wenn Sie Fragen oder Bedenken zu dieser Datenschutzerklärung oder den Datenschutzpraktiken von Free Calculator haben, kontaktieren Sie uns unter:",
+    "E-Mail:",
+    "© 2026 Blue Acid Labs. Alle Rechte vorbehalten.",
+    "Abschnittsmenü umschalten",
+    "Abschnitte der Richtlinie"
+  ],
+  "fr": [
+    "Sommaire",
+    "Politique de confidentialité - Free Calculator",
+    "Développeur :",
+    "Dernière mise à jour :",
+    "Septembre 2026",
+    "Contact :",
+    "Blue Acid Labs exploite l’application mobile Free Calculator.",
+    "Cette Politique de confidentialité explique comment les informations sont traitées lorsque vous utilisez Free Calculator, notamment dans le cadre de Google Play Billing, Google AdMob et de la User Messaging Platform de Google.",
+    "Informations que nous collectons et traitons",
+    "Données de calcul et d’utilité",
+    "Free Calculator exécute directement sur votre appareil des fonctions mathématiques, scientifiques, financières, de salaire, de pourboire, de prêt, de date et d’autres fonctions de calcul.",
+    "Les saisies de calcul, résultats, préférences et historiques de calcul pris en charge sont traités localement dans l’App et le stockage de l’appareil.",
+    "Nous n’exploitons ni système de compte FreeCalc ni backend FreeCalc pour stocker vos informations de calcul, et nous ne vendons, louons ni échangeons vos données de calcul.",
+    "Préférences de l’application",
+    "Les paramètres tels que la langue et les autres préférences d’application prises en charge peuvent être stockés localement sur votre appareil afin que l’App mémorise vos choix.",
+    "Informations sur l’abonnement Google Play",
+    "Free Calculator propose via Google Play un abonnement Pro facultatif à 1,59 USD par mois.",
+    "Les achats d’abonnement, le traitement des paiements, la facturation récurrente et la gestion des abonnements sont assurés par Google Play Billing.",
+    "Free Calculator vérifie l’état d’achat Google Play disponible pour l’App afin de déterminer si un droit Pro actif existe.",
+    "Nous ne collectons ni ne stockons votre numéro de carte de crédit, votre numéro de carte de débit ou vos identifiants de paiement Google Play.",
+    "Votre abonnement Pro reste soumis aux tarifs et conditions présentés par Google Play au moment de l’achat.",
+    "Utilisation des informations",
+    "Les informations traitées par Free Calculator sont utilisées pour :",
+    "Effectuer les calculs et fonctions utilitaires que vous demandez.",
+    "Stocker localement sur votre appareil l’historique de calcul pris en charge et vos préférences.",
+    "Déterminer si votre abonnement Google Play Pro est actif.",
+    "Activer l’expérience Pro sans publicité tant qu’un abonnement éligible reste actif.",
+    "Afficher des publicités aux utilisateurs de l’offre gratuite.",
+    "Respecter les exigences applicables en matière de confidentialité publicitaire et de consentement.",
+    "Publicité de l’offre gratuite",
+    "La version gratuite de Free Calculator affiche des publicités via Google AdMob, un service fourni par Google LLC.",
+    "Google et ses partenaires publicitaires peuvent traiter des informations liées à la publicité, notamment des identifiants d’appareil ou publicitaires, l’adresse IP, des informations de diagnostic, les interactions avec les publicités et d’autres informations autorisées par vos choix de confidentialité et la loi applicable.",
+    "Les informations exactes traitées par Google peuvent dépendre de votre appareil, région, paramètres publicitaires, choix de consentement et des services Google.",
+    "Free Calculator ne vend pas votre historique de calcul ni vos saisies de calculatrice aux annonceurs.",
+    "Les utilisateurs disposant d’un abonnement FreeCalc Pro actif ne reçoivent pas de publicités AdMob de l’App tant que leur droit Pro éligible reste actif.",
+    "Consentement publicitaire et choix de confidentialité",
+    "Free Calculator intègre la User Messaging Platform (UMP) de Google.",
+    "Lorsque cela est requis, notamment pour les utilisateurs de régions soumises à des exigences européennes applicables en matière de confidentialité publicitaire, Google peut afficher un message de consentement ou de confidentialité avant l’envoi de demandes publicitaires.",
+    "Free Calculator suit les informations d’éligibilité publicitaire et de consentement renvoyées par la User Messaging Platform de Google.",
+    "Lorsque cette option est disponible, Free Calculator propose également des choix de confidentialité publicitaire permettant aux utilisateurs d’accéder à l’interface d’options de confidentialité de Google et de consulter ou modifier leurs choix applicables.",
+    "Les utilisateurs ayant déjà donné leur consentement peuvent utiliser le mécanisme de choix de confidentialité disponible pour revoir ou retirer le consentement applicable.",
+    "Pour en savoir plus sur la manière dont Google traite les informations lorsque ses services sont utilisés dans des applications partenaires, consultez les informations de confidentialité de Google :",
+    "Google — Comment Google utilise les informations provenant de sites ou d’applications qui utilisent ses services",
+    "Responsabilité de Google en matière de données d’entreprise",
+    "Services tiers",
+    "Free Calculator utilise les services Google suivants :",
+    "Google Play Billing — Google LLC",
+    "Google Play traite le paiement des abonnements, les informations de paiement, la facturation récurrente, la confirmation d’achat et la gestion des abonnements.",
+    "Google AdMob — Google LLC",
+    "Google AdMob fournit des publicités aux utilisateurs de l’offre gratuite.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP gère le consentement publicitaire applicable et les choix de confidentialité.",
+    "Ces services tiers traitent les informations conformément à leurs propres conditions et politiques de confidentialité.",
+    "Politique de confidentialité de Google",
+    "Conservation et suppression des données",
+    "Free Calculator ne vous oblige pas à créer un compte FreeCalc.",
+    "Les informations de calcul et préférences prises en charge enregistrées par Free Calculator restent localement sur votre appareil selon le fonctionnement de l’App.",
+    "Vous pouvez supprimer les informations stockées localement en utilisant les fonctions d’effacement disponibles dans Free Calculator ou en effaçant le stockage de l’application Free Calculator dans les paramètres Android de l’appareil.",
+    "La désinstallation de Free Calculator supprime également les informations locales propres à l’App conformément au fonctionnement normal du stockage des applications Android.",
+    "Les informations traitées indépendamment par Google via Google Play, AdMob ou des services Google associés sont soumises aux pratiques applicables de Google en matière de conservation et de suppression.",
+    "Gestion et annulation de l’abonnement Google Play",
+    "Les abonnements FreeCalc Pro sont gérés via Google Play.",
+    "Vous pouvez consulter, gérer ou annuler votre abonnement via :",
+    "Profil",
+    "Paiements et abonnements",
+    "Abonnements",
+    "L’annulation est gérée par Google Play. L’annulation d’un abonnement empêche normalement son prochain renouvellement tout en laissant les avantages Pro éligibles disponibles jusqu’à la fin de la période d’abonnement déjà payée.",
+    "Lorsque Google Play ne signale plus à Free Calculator un droit Pro éligible, l’App revient à l’offre gratuite et des publicités peuvent à nouveau être affichées.",
+    "Sécurité des données",
+    "Les données de calcul traitées localement par Free Calculator sont stockées dans l’environnement de stockage de l’application sur l’appareil.",
+    "Google Play Billing et les services publicitaires de Google communiquent via les services de plateforme Google et leurs mécanismes de sécurité respectifs.",
+    "Aucune méthode de stockage ou de transmission électronique ne peut être garantie comme totalement sûre, mais nous prenons des mesures raisonnables adaptées à l’architecture de Free Calculator afin de limiter la collecte et le traitement inutiles d’informations.",
+    "Confidentialité des enfants",
+    "Free Calculator est une application générale de calculatrice et d’utilitaires.",
+    "L’App ne nécessite ni création de compte ni informations personnelles pour exécuter ses fonctions de calcul.",
+    "Nous ne collectons pas sciemment d’informations personnelles directement auprès d’enfants via un compte FreeCalc ou un service backend.",
+    "Les publicités affichées via Google AdMob sont soumises aux paramètres d’audience, à la configuration de confidentialité, aux lois applicables et aux politiques Google configurées pour l’App.",
+    "Utilisateurs internationaux",
+    "Free Calculator peut être proposé dans plusieurs pays.",
+    "Des services tiers tels que Google Play et Google AdMob peuvent traiter des informations dans des pays autres que votre pays de résidence, sous réserve de leurs pratiques de confidentialité et garanties juridiques applicables.",
+    "Lorsque cela est requis, le consentement publicitaire et les choix de confidentialité sont fournis via la User Messaging Platform de Google.",
+    "Modifications de cette Politique de confidentialité",
+    "Nous pouvons mettre à jour cette Politique de confidentialité afin de refléter les modifications de Free Calculator, des services tiers, des exigences légales ou de nos pratiques de confidentialité.",
+    "Lorsque la politique est mise à jour, la date « Dernière mise à jour » en haut de cette page est révisée.",
+    "Nous encourageons les utilisateurs à consulter régulièrement cette Politique de confidentialité.",
+    "Nous contacter",
+    "Si vous avez des questions ou préoccupations concernant cette Politique de confidentialité ou les pratiques de confidentialité de Free Calculator, contactez :",
+    "E-mail :",
+    "© 2026 Blue Acid Labs. Tous droits réservés.",
+    "Afficher/masquer le menu des sections",
+    "Sections de la politique"
+  ],
+  "pt": [
+    "Conteúdo",
+    "Política de Privacidade - Free Calculator",
+    "Desenvolvedor:",
+    "Última atualização:",
+    "Setembro de 2026",
+    "Contato:",
+    "A Blue Acid Labs opera o aplicativo móvel Free Calculator.",
+    "Esta Política de Privacidade explica como as informações são processadas quando você usa o Free Calculator, incluindo o uso do Google Play Billing, Google AdMob e da User Messaging Platform do Google.",
+    "Informações que coletamos e processamos",
+    "Dados de cálculo e utilitários",
+    "O Free Calculator executa funções matemáticas, científicas, financeiras, de salário, gorjeta, empréstimo, data e outras funções de calculadora diretamente no seu dispositivo.",
+    "Entradas de cálculo, resultados, preferências e histórico de cálculos compatível são processados localmente no App e no armazenamento do dispositivo.",
+    "Não operamos um sistema de conta FreeCalc nem um backend FreeCalc para armazenar suas informações de cálculo, e não vendemos, alugamos nem comercializamos seus dados de cálculo.",
+    "Preferências do aplicativo",
+    "Configurações como idioma e outras preferências compatíveis do aplicativo podem ser armazenadas localmente no dispositivo para que o App se lembre das suas escolhas.",
+    "Informações de assinatura do Google Play",
+    "O Free Calculator oferece uma assinatura Pro opcional por US$ 1,59 por mês por meio do Google Play.",
+    "Compras de assinatura, processamento de pagamentos, cobrança recorrente e gerenciamento de assinaturas são tratados pelo Google Play Billing.",
+    "O Free Calculator verifica o status de compra do Google Play disponível para o App para determinar se existe um direito Pro ativo.",
+    "Não coletamos nem armazenamos o número do seu cartão de crédito, cartão de débito ou credenciais de pagamento do Google Play.",
+    "Sua assinatura Pro continua sujeita aos preços e termos apresentados pelo Google Play no momento da compra.",
+    "Como as informações são usadas",
+    "As informações processadas pelo Free Calculator são usadas para:",
+    "Executar cálculos e funções utilitárias solicitadas por você.",
+    "Armazenar localmente no dispositivo o histórico de cálculos compatível e as preferências.",
+    "Determinar se sua assinatura Google Play Pro está ativa.",
+    "Ativar a experiência Pro sem anúncios enquanto uma assinatura elegível permanecer ativa.",
+    "Exibir anúncios aos usuários do plano gratuito.",
+    "Cumprir os requisitos aplicáveis de privacidade e consentimento de publicidade.",
+    "Publicidade do plano gratuito",
+    "A versão gratuita do Free Calculator exibe anúncios usando o Google AdMob, um serviço fornecido pela Google LLC.",
+    "O Google e seus parceiros de publicidade podem processar informações associadas à publicidade, incluindo identificadores de dispositivo ou publicidade, endereço IP, informações de diagnóstico, interações com anúncios e outras informações permitidas por suas escolhas de privacidade e pela legislação aplicável.",
+    "As informações exatas processadas pelo Google podem depender do dispositivo, região, configurações de publicidade, escolhas de consentimento e serviços do Google.",
+    "O Free Calculator não vende seu histórico de cálculos nem entradas da calculadora para anunciantes.",
+    "Usuários com uma assinatura FreeCalc Pro ativa não recebem anúncios do AdMob no App enquanto o direito Pro elegível permanecer ativo.",
+    "Consentimento de publicidade e escolhas de privacidade",
+    "O Free Calculator integra a User Messaging Platform (UMP) do Google.",
+    "Quando exigido, como em regiões sujeitas a requisitos europeus aplicáveis de privacidade em publicidade, o Google pode apresentar uma mensagem de consentimento ou privacidade antes que as solicitações de anúncios sejam feitas.",
+    "O Free Calculator segue as informações de elegibilidade para publicidade e consentimento retornadas pela User Messaging Platform do Google.",
+    "Quando disponível, o Free Calculator também oferece uma opção de Escolhas de Privacidade de Anúncios que permite acessar a interface de opções de privacidade do Google e revisar ou alterar as escolhas aplicáveis.",
+    "Usuários que já deram consentimento podem usar o mecanismo de escolhas de privacidade disponível para revisar ou revogar o consentimento aplicável.",
+    "Para mais informações sobre como o Google processa informações quando seus serviços são usados em aplicativos parceiros, consulte as informações de privacidade do Google:",
+    "Google — Como o Google usa informações de sites ou apps que utilizam seus serviços",
+    "Responsabilidade de Dados Empresariais do Google",
+    "Serviços de terceiros",
+    "O Free Calculator usa os seguintes serviços do Google:",
+    "Google Play Billing — Google LLC",
+    "O Google Play processa checkout de assinatura, informações de pagamento, cobrança recorrente, confirmação de compra e gerenciamento de assinatura.",
+    "Google AdMob — Google LLC",
+    "O Google AdMob fornece anúncios para usuários do plano gratuito.",
+    "Google User Messaging Platform — Google LLC",
+    "O Google UMP gerencia o consentimento de publicidade aplicável e as escolhas de privacidade.",
+    "Esses serviços de terceiros processam informações de acordo com seus próprios termos e políticas de privacidade.",
+    "Política de Privacidade do Google",
+    "Retenção e exclusão de dados",
+    "O Free Calculator não exige que você crie uma conta FreeCalc.",
+    "As informações de cálculo e preferências compatíveis armazenadas pelo Free Calculator permanecem localmente no dispositivo de acordo com a funcionalidade do App.",
+    "Você pode remover informações armazenadas localmente usando funções de limpeza disponíveis no Free Calculator ou limpando o armazenamento do aplicativo Free Calculator nas configurações do dispositivo Android.",
+    "Desinstalar o Free Calculator também remove informações locais específicas do App conforme o comportamento normal de armazenamento de aplicativos do Android.",
+    "As informações processadas de forma independente pelo Google por meio do Google Play, AdMob ou serviços relacionados estão sujeitas às práticas aplicáveis de retenção e exclusão do Google.",
+    "Gerenciamento e cancelamento da assinatura do Google Play",
+    "As assinaturas FreeCalc Pro são gerenciadas pelo Google Play.",
+    "Você pode visualizar, gerenciar ou cancelar sua assinatura em:",
+    "Perfil",
+    "Pagamentos e assinaturas",
+    "Assinaturas",
+    "O cancelamento é tratado pelo Google Play. Cancelar uma assinatura normalmente impede a próxima renovação, enquanto os benefícios Pro elegíveis continuam disponíveis até o fim do período já pago.",
+    "Depois que o Google Play deixar de informar ao Free Calculator um direito Pro elegível, o App volta ao plano gratuito e os anúncios podem ser exibidos novamente.",
+    "Segurança de dados",
+    "Os dados de cálculo processados localmente pelo Free Calculator são armazenados no ambiente de armazenamento do aplicativo no dispositivo.",
+    "O Google Play Billing e os serviços de publicidade do Google se comunicam usando os serviços de plataforma do Google e seus respectivos mecanismos de segurança.",
+    "Nenhum método de armazenamento ou transmissão eletrônica pode ser garantido como totalmente seguro, mas adotamos medidas razoáveis apropriadas à arquitetura do Free Calculator para minimizar a coleta e o processamento desnecessários de informações.",
+    "Privacidade das crianças",
+    "O Free Calculator é um aplicativo de calculadora e utilitários de uso geral.",
+    "O App não exige cadastro de conta nem informações pessoais para executar suas funções de calculadora.",
+    "Não coletamos intencionalmente informações pessoais diretamente de crianças por meio de uma conta FreeCalc ou serviço de backend.",
+    "Os anúncios exibidos por meio do Google AdMob estão sujeitos às configurações de público, configuração de privacidade, leis aplicáveis e políticas do Google definidas para o App.",
+    "Usuários internacionais",
+    "O Free Calculator pode ser disponibilizado em vários países.",
+    "Serviços de terceiros como Google Play e Google AdMob podem processar informações em países diferentes do seu país de residência, sujeitos às práticas de privacidade e salvaguardas legais aplicáveis.",
+    "Quando exigido, o consentimento de publicidade e as escolhas de privacidade são fornecidos por meio da User Messaging Platform do Google.",
+    "Alterações nesta Política de Privacidade",
+    "Podemos atualizar esta Política de Privacidade para refletir mudanças no Free Calculator, em serviços de terceiros, requisitos legais ou em nossas práticas de privacidade.",
+    "Quando a política for atualizada, a data de Última atualização no topo desta página será revisada.",
+    "Recomendamos que os usuários revisem esta Política de Privacidade periodicamente.",
+    "Fale conosco",
+    "Se você tiver dúvidas ou preocupações sobre esta Política de Privacidade ou as práticas de privacidade do Free Calculator, entre em contato:",
+    "E-mail:",
+    "© 2026 Blue Acid Labs. Todos os direitos reservados.",
+    "Alternar menu de seções",
+    "Seções da política"
+  ],
+  "es": [
+    "Contenido",
+    "Política de privacidad - Free Calculator",
+    "Desarrollador:",
+    "Última actualización:",
+    "Septiembre de 2026",
+    "Contacto:",
+    "Blue Acid Labs opera la aplicación móvil Free Calculator.",
+    "Esta Política de privacidad explica cómo se procesa la información cuando utiliza Free Calculator, incluido el uso de Google Play Billing, Google AdMob y la User Messaging Platform de Google.",
+    "Información que recopilamos y procesamos",
+    "Datos de cálculo y utilidades",
+    "Free Calculator realiza directamente en su dispositivo funciones matemáticas, científicas, financieras, de salario, propinas, préstamos, fechas y otras funciones de calculadora.",
+    "Las entradas de cálculo, los resultados, las preferencias y el historial de cálculos compatible se procesan localmente dentro de la App y del almacenamiento del dispositivo.",
+    "No operamos un sistema de cuentas FreeCalc ni un backend de FreeCalc para almacenar su información de cálculo, y no vendemos, alquilamos ni comercializamos sus datos de cálculo.",
+    "Preferencias de la aplicación",
+    "Los ajustes como el idioma y otras preferencias compatibles de la aplicación pueden almacenarse localmente en su dispositivo para que la App recuerde sus selecciones.",
+    "Información de suscripción de Google Play",
+    "Free Calculator ofrece una suscripción Pro opcional por 1,59 USD al mes a través de Google Play.",
+    "Las compras de suscripción, el procesamiento de pagos, la facturación recurrente y la gestión de suscripciones son gestionados por Google Play Billing.",
+    "Free Calculator comprueba el estado de compra de Google Play disponible para la App para determinar si existe un derecho Pro activo.",
+    "No recopilamos ni almacenamos su número de tarjeta de crédito, número de tarjeta de débito ni credenciales de pago de Google Play.",
+    "Su suscripción Pro sigue sujeta a los precios y condiciones presentados por Google Play en el momento de la compra.",
+    "Cómo se utiliza la información",
+    "La información procesada por Free Calculator se utiliza para:",
+    "Realizar los cálculos y funciones de utilidad que solicite.",
+    "Almacenar localmente en su dispositivo el historial de cálculos compatible y sus preferencias.",
+    "Determinar si su suscripción Google Play Pro está activa.",
+    "Habilitar la experiencia Pro sin anuncios mientras una suscripción elegible permanezca activa.",
+    "Mostrar anuncios a los usuarios del nivel gratuito.",
+    "Cumplir los requisitos aplicables de privacidad y consentimiento publicitario.",
+    "Publicidad del nivel gratuito",
+    "La versión gratuita de Free Calculator muestra anuncios mediante Google AdMob, un servicio proporcionado por Google LLC.",
+    "Google y sus socios publicitarios pueden procesar información asociada con la publicidad, que puede incluir identificadores del dispositivo o publicitarios, dirección IP, información de diagnóstico, interacciones con anuncios y otra información permitida por sus opciones de privacidad y la legislación aplicable.",
+    "La información exacta procesada por Google puede depender de su dispositivo, región, configuración publicitaria, opciones de consentimiento y servicios de Google.",
+    "Free Calculator no vende su historial de cálculos ni las entradas de la calculadora a los anunciantes.",
+    "Los usuarios con una suscripción FreeCalc Pro activa no reciben anuncios de AdMob de la App mientras su derecho Pro elegible permanezca activo.",
+    "Consentimiento publicitario y opciones de privacidad",
+    "Free Calculator integra la User Messaging Platform (UMP) de Google.",
+    "Cuando sea necesario, como para usuarios de regiones sujetas a requisitos europeos aplicables de privacidad publicitaria, Google puede mostrar un mensaje de consentimiento o privacidad antes de realizar solicitudes de anuncios.",
+    "Free Calculator sigue la información de elegibilidad publicitaria y consentimiento devuelta por la User Messaging Platform de Google.",
+    "Cuando esté disponible, Free Calculator también ofrece una opción de Privacidad de anuncios que permite acceder a la interfaz de opciones de privacidad de Google y revisar o cambiar las opciones aplicables.",
+    "Los usuarios que hayan dado su consentimiento anteriormente pueden utilizar el mecanismo disponible de opciones de privacidad para revisar o revocar el consentimiento aplicable.",
+    "Para obtener más información sobre cómo Google procesa la información cuando sus servicios se utilizan en aplicaciones asociadas, consulte la información de privacidad de Google:",
+    "Google — Cómo utiliza Google la información de sitios o aplicaciones que usan sus servicios",
+    "Responsabilidad de datos empresariales de Google",
+    "Servicios de terceros",
+    "Free Calculator utiliza los siguientes servicios de Google:",
+    "Google Play Billing — Google LLC",
+    "Google Play procesa el pago de suscripciones, la información de pago, la facturación recurrente, la confirmación de compra y la gestión de suscripciones.",
+    "Google AdMob — Google LLC",
+    "Google AdMob proporciona anuncios a los usuarios del nivel gratuito.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP gestiona el consentimiento publicitario aplicable y las opciones de privacidad.",
+    "Estos servicios de terceros procesan la información de acuerdo con sus propios términos y políticas de privacidad.",
+    "Política de privacidad de Google",
+    "Retención y eliminación de datos",
+    "Free Calculator no requiere que cree una cuenta FreeCalc.",
+    "La información de cálculo y las preferencias compatibles almacenadas por Free Calculator permanecen localmente en su dispositivo de acuerdo con la funcionalidad de la App.",
+    "Puede eliminar la información almacenada localmente mediante las funciones de borrado disponibles en Free Calculator o borrando el almacenamiento de la aplicación Free Calculator en los ajustes del dispositivo Android.",
+    "Desinstalar Free Calculator también elimina la información local específica de la App de acuerdo con el comportamiento normal de almacenamiento de aplicaciones de Android.",
+    "La información procesada de forma independiente por Google a través de Google Play, AdMob o servicios relacionados está sujeta a las prácticas aplicables de retención y eliminación de Google.",
+    "Gestión y cancelación de la suscripción de Google Play",
+    "Las suscripciones FreeCalc Pro se gestionan a través de Google Play.",
+    "Puede ver, gestionar o cancelar su suscripción en:",
+    "Perfil",
+    "Pagos y suscripciones",
+    "Suscripciones",
+    "La cancelación es gestionada por Google Play. Cancelar una suscripción normalmente evita su próxima renovación, mientras que los beneficios Pro elegibles permanecen disponibles hasta el final del periodo de suscripción ya pagado.",
+    "Cuando Google Play deja de informar a Free Calculator de un derecho Pro elegible, la App vuelve al nivel gratuito y pueden volver a mostrarse anuncios.",
+    "Seguridad de los datos",
+    "Los datos de cálculo procesados localmente por Free Calculator se almacenan en el entorno de almacenamiento de la aplicación del dispositivo.",
+    "Google Play Billing y los servicios publicitarios de Google se comunican mediante los servicios de plataforma de Google y sus respectivos mecanismos de seguridad.",
+    "No se puede garantizar que ningún método de almacenamiento o transmisión electrónica sea completamente seguro, pero tomamos medidas razonables adecuadas a la arquitectura de Free Calculator para minimizar la recopilación y el procesamiento innecesarios de información.",
+    "Privacidad de los niños",
+    "Free Calculator es una aplicación de calculadora y utilidades de uso general.",
+    "La App no requiere registro de cuenta ni información personal para realizar sus funciones de calculadora.",
+    "No recopilamos conscientemente información personal directamente de niños a través de una cuenta FreeCalc o un servicio backend.",
+    "Los anuncios mostrados mediante Google AdMob están sujetos a la configuración de audiencia, la configuración de privacidad, las leyes aplicables y las políticas de Google configuradas para la App.",
+    "Usuarios internacionales",
+    "Free Calculator puede estar disponible en varios países.",
+    "Servicios de terceros como Google Play y Google AdMob pueden procesar información en países distintos de su país de residencia, sujetos a sus prácticas de privacidad y salvaguardas legales aplicables.",
+    "Cuando sea necesario, el consentimiento publicitario y las opciones de privacidad se proporcionan a través de la User Messaging Platform de Google.",
+    "Cambios en esta Política de privacidad",
+    "Podemos actualizar esta Política de privacidad para reflejar cambios en Free Calculator, servicios de terceros, requisitos legales o nuestras prácticas de privacidad.",
+    "Cuando se actualice la política, se revisará la fecha de Última actualización en la parte superior de esta página.",
+    "Animamos a los usuarios a revisar periódicamente esta Política de privacidad.",
+    "Contáctenos",
+    "Si tiene preguntas o inquietudes sobre esta Política de privacidad o las prácticas de privacidad de Free Calculator, contacte con:",
+    "Correo electrónico:",
+    "© 2026 Blue Acid Labs. Todos los derechos reservados.",
+    "Alternar menú de secciones",
+    "Secciones de la política"
+  ],
+  "ar": [
+    "المحتويات",
+    "سياسة الخصوصية - Free Calculator",
+    "المطوّر:",
+    "آخر تحديث:",
+    "سبتمبر 2026",
+    "التواصل:",
+    "تدير Blue Acid Labs تطبيق Free Calculator للهواتف المحمولة.",
+    "توضح سياسة الخصوصية هذه كيفية معالجة المعلومات عند استخدام Free Calculator، بما في ذلك استخدام Google Play Billing وGoogle AdMob وGoogle User Messaging Platform.",
+    "المعلومات التي نجمعها ونعالجها",
+    "بيانات الحساب والأدوات",
+    "ينفذ Free Calculator وظائف حسابية وعلمية ومالية وحسابات الرواتب والإكراميات والقروض والتواريخ وغيرها مباشرة على جهازك.",
+    "تتم معالجة مدخلات الحساب والنتائج والتفضيلات وسجل الحساب المدعوم محليًا داخل التطبيق وفي مساحة تخزين الجهاز.",
+    "لا ندير نظام حسابات FreeCalc أو خادمًا خلفيًا لـ FreeCalc لتخزين معلومات حساباتك، ولا نبيع بيانات الحساب أو نؤجرها أو نتاجر بها.",
+    "تفضيلات التطبيق",
+    "قد يتم تخزين إعدادات مثل اللغة وغيرها من تفضيلات التطبيق المدعومة محليًا على جهازك حتى يتمكن التطبيق من تذكر اختياراتك.",
+    "معلومات اشتراك Google Play",
+    "يوفر Free Calculator اشتراك Pro اختياريًا بقيمة 1.99 دولار أمريكي شهريًا عبر Google Play.",
+    "تتم معالجة شراء الاشتراك والدفع والفوترة المتكررة وإدارة الاشتراك بواسطة Google Play Billing.",
+    "يتحقق Free Calculator من حالة شراء Google Play المتاحة للتطبيق لتحديد ما إذا كان هناك استحقاق Pro نشط.",
+    "لا نجمع أو نخزن رقم بطاقتك الائتمانية أو بطاقة الخصم أو بيانات اعتماد الدفع في Google Play.",
+    "يظل اشتراك Pro خاضعًا للأسعار والشروط المعروضة في Google Play وقت الشراء.",
+    "كيفية استخدام المعلومات",
+    "تُستخدم المعلومات التي يعالجها Free Calculator من أجل:",
+    "تنفيذ الحسابات ووظائف الأدوات التي تطلبها.",
+    "تخزين سجل الحساب المدعوم والتفضيلات محليًا على جهازك.",
+    "تحديد ما إذا كان اشتراك Google Play Pro نشطًا.",
+    "تمكين تجربة Pro بدون إعلانات ما دام الاشتراك المؤهل نشطًا.",
+    "عرض الإعلانات لمستخدمي الفئة المجانية.",
+    "الامتثال لمتطلبات الخصوصية والموافقة الإعلانية المعمول بها.",
+    "إعلانات الفئة المجانية",
+    "تعرض النسخة المجانية من Free Calculator الإعلانات باستخدام Google AdMob، وهي خدمة تقدمها Google LLC.",
+    "قد تعالج Google وشركاؤها الإعلانيون معلومات مرتبطة بالإعلانات، وقد تشمل معرّفات الجهاز أو الإعلانات وعنوان IP ومعلومات التشخيص والتفاعل مع الإعلانات ومعلومات أخرى تسمح بها اختيارات الخصوصية والقانون المعمول به.",
+    "قد تعتمد المعلومات الدقيقة التي تعالجها Google على جهازك ومنطقتك وإعدادات الإعلانات واختيارات الموافقة وخدمات Google.",
+    "لا يبيع Free Calculator سجل حساباتك أو مدخلات الآلة الحاسبة للمعلنين.",
+    "لا يتلقى المستخدمون الذين لديهم اشتراك FreeCalc Pro نشط إعلانات AdMob من التطبيق ما دام استحقاق Pro المؤهل نشطًا.",
+    "الموافقة الإعلانية وخيارات الخصوصية",
+    "يدمج Free Calculator منصة Google User Messaging Platform (UMP).",
+    "عند الاقتضاء، مثل المستخدمين في المناطق الخاضعة لمتطلبات الخصوصية الإعلانية الأوروبية المعمول بها، قد تعرض Google رسالة موافقة أو خصوصية قبل إرسال طلبات الإعلانات.",
+    "يتبع Free Calculator معلومات أهلية الإعلانات والموافقة التي تعيدها Google User Messaging Platform.",
+    "عند توفرها، يوفر Free Calculator أيضًا خيار خصوصية الإعلانات الذي يتيح للمستخدمين الوصول إلى واجهة خيارات الخصوصية من Google ومراجعة أو تغيير خيارات الخصوصية الإعلانية المطبقة.",
+    "يمكن للمستخدمين الذين سبق أن قدموا موافقتهم استخدام آلية خيارات الخصوصية المتاحة لمراجعة الموافقة المعمول بها أو سحبها.",
+    "لمزيد من المعلومات حول كيفية معالجة Google للمعلومات عند استخدام خدماتها في تطبيقات الشركاء، يرجى مراجعة معلومات الخصوصية لدى Google:",
+    "Google — كيفية استخدام Google للمعلومات من المواقع أو التطبيقات التي تستخدم خدماتها",
+    "مسؤولية Google عن بيانات الأعمال",
+    "خدمات الجهات الخارجية",
+    "يستخدم Free Calculator خدمات Google التالية:",
+    "Google Play Billing — Google LLC",
+    "يعالج Google Play إتمام الاشتراك ومعلومات الدفع والفوترة المتكررة وتأكيد الشراء وإدارة الاشتراك.",
+    "Google AdMob — Google LLC",
+    "يوفر Google AdMob الإعلانات لمستخدمي الفئة المجانية.",
+    "Google User Messaging Platform — Google LLC",
+    "تدير Google UMP الموافقة الإعلانية وخيارات الخصوصية المطبقة.",
+    "تعالج خدمات الجهات الخارجية هذه المعلومات وفقًا لشروطها وسياسات الخصوصية الخاصة بها.",
+    "سياسة خصوصية Google",
+    "الاحتفاظ بالبيانات وحذفها",
+    "لا يتطلب Free Calculator إنشاء حساب FreeCalc.",
+    "تظل معلومات الحساب والتفضيلات المدعومة التي يخزنها Free Calculator محفوظة محليًا على جهازك وفقًا لوظائف التطبيق.",
+    "يمكنك إزالة المعلومات المخزنة محليًا باستخدام وظائف المسح المتاحة داخل Free Calculator أو بمسح مساحة تخزين تطبيق Free Calculator من إعدادات جهاز Android.",
+    "تؤدي إزالة Free Calculator أيضًا إلى حذف المعلومات المحلية الخاصة بالتطبيق وفقًا لسلوك تخزين التطبيقات المعتاد في Android.",
+    "تخضع المعلومات التي تعالجها Google بشكل مستقل عبر Google Play أو AdMob أو خدمات Google ذات الصلة لممارسات Google المعمول بها للاحتفاظ والحذف.",
+    "إدارة اشتراك Google Play وإلغاؤه",
+    "تتم إدارة اشتراكات FreeCalc Pro عبر Google Play.",
+    "يمكنك عرض اشتراكك أو إدارته أو إلغاؤه من خلال:",
+    "الملف الشخصي",
+    "المدفوعات والاشتراكات",
+    "الاشتراكات",
+    "تتم معالجة الإلغاء بواسطة Google Play. يؤدي إلغاء الاشتراك عادةً إلى منع التجديد التالي مع بقاء مزايا Pro المؤهلة متاحة حتى نهاية فترة الاشتراك المدفوعة بالفعل.",
+    "بعد أن يتوقف Google Play عن إبلاغ Free Calculator بوجود استحقاق Pro مؤهل، يعود التطبيق إلى الفئة المجانية وقد تظهر الإعلانات مرة أخرى.",
+    "أمان البيانات",
+    "يتم تخزين بيانات الحساب التي يعالجها Free Calculator محليًا ضمن بيئة تخزين التطبيق على الجهاز.",
+    "يتواصل Google Play Billing وخدمات Google الإعلانية باستخدام خدمات منصة Google وآليات الأمان الخاصة بها.",
+    "لا يمكن ضمان أمان أي طريقة تخزين أو نقل إلكترونية بشكل كامل، لكننا نتخذ تدابير معقولة تتناسب مع بنية Free Calculator لتقليل جمع المعلومات ومعالجتها غير الضرورية.",
+    "خصوصية الأطفال",
+    "Free Calculator هو تطبيق عام للآلة الحاسبة والأدوات.",
+    "لا يتطلب التطبيق تسجيل حساب أو معلومات شخصية لتنفيذ وظائف الآلة الحاسبة.",
+    "لا نجمع عن قصد معلومات شخصية مباشرة من الأطفال عبر حساب FreeCalc أو خدمة خلفية.",
+    "تخضع الإعلانات المعروضة عبر Google AdMob لإعدادات الجمهور وتهيئة الخصوصية والقوانين المعمول بها وسياسات Google المهيأة للتطبيق.",
+    "المستخدمون الدوليون",
+    "قد يتوفر Free Calculator في بلدان متعددة.",
+    "قد تعالج خدمات الجهات الخارجية مثل Google Play وGoogle AdMob المعلومات في بلدان غير بلد إقامتك، وفقًا لممارسات الخصوصية والضمانات القانونية المعمول بها لديها.",
+    "عند الاقتضاء، يتم توفير الموافقة الإعلانية وخيارات الخصوصية من خلال Google User Messaging Platform.",
+    "التغييرات على سياسة الخصوصية هذه",
+    "قد نحدّث سياسة الخصوصية هذه لتعكس التغييرات في Free Calculator أو خدمات الجهات الخارجية أو المتطلبات القانونية أو ممارسات الخصوصية لدينا.",
+    "عند تحديث السياسة، سيتم تعديل تاريخ آخر تحديث في أعلى هذه الصفحة.",
+    "نشجع المستخدمين على مراجعة سياسة الخصوصية هذه بشكل دوري.",
+    "اتصل بنا",
+    "إذا كانت لديك أسئلة أو مخاوف بشأن سياسة الخصوصية هذه أو ممارسات الخصوصية في Free Calculator، فتواصل معنا:",
+    "البريد الإلكتروني:",
+    "© 2026 Blue Acid Labs. جميع الحقوق محفوظة.",
+    "تبديل قائمة الأقسام",
+    "أقسام السياسة"
+  ],
+  "it": [
+    "Indice",
+    "Informativa sulla privacy - Free Calculator",
+    "Sviluppatore:",
+    "Ultimo aggiornamento:",
+    "Settembre 2026",
+    "Contatto:",
+    "Blue Acid Labs gestisce l’app mobile Free Calculator.",
+    "La presente Informativa sulla privacy spiega come vengono trattate le informazioni quando utilizzi Free Calculator, incluso l’uso di Google Play Billing, Google AdMob e della User Messaging Platform di Google.",
+    "Informazioni raccolte e trattate",
+    "Dati di calcolo e utilità",
+    "Free Calculator esegue direttamente sul dispositivo funzioni matematiche, scientifiche, finanziarie, di stipendio, mancia, prestito, data e altre funzioni di calcolo.",
+    "Gli input di calcolo, i risultati, le preferenze e la cronologia dei calcoli supportata vengono elaborati localmente nell’App e nella memoria del dispositivo.",
+    "Non gestiamo un sistema di account FreeCalc né un backend FreeCalc per memorizzare le informazioni di calcolo e non vendiamo, affittiamo o scambiamo i dati di calcolo.",
+    "Preferenze dell’app",
+    "Impostazioni come la lingua e altre preferenze dell’app supportate possono essere memorizzate localmente sul dispositivo affinché l’App ricordi le tue scelte.",
+    "Informazioni sull’abbonamento Google Play",
+    "Free Calculator offre tramite Google Play un abbonamento Pro facoltativo a 1,59 USD al mese.",
+    "Gli acquisti degli abbonamenti, l’elaborazione dei pagamenti, la fatturazione ricorrente e la gestione degli abbonamenti sono gestiti da Google Play Billing.",
+    "Free Calculator verifica lo stato di acquisto Google Play disponibile per l’App per determinare se esiste un diritto Pro attivo.",
+    "Non raccogliamo né memorizziamo il numero della carta di credito, della carta di debito o le credenziali di pagamento Google Play.",
+    "L’abbonamento Pro resta soggetto ai prezzi e ai termini mostrati da Google Play al momento dell’acquisto.",
+    "Come vengono usate le informazioni",
+    "Le informazioni trattate da Free Calculator vengono utilizzate per:",
+    "Eseguire i calcoli e le funzioni di utilità richiesti.",
+    "Memorizzare localmente sul dispositivo la cronologia dei calcoli supportata e le preferenze.",
+    "Determinare se l’abbonamento Google Play Pro è attivo.",
+    "Abilitare l’esperienza Pro senza pubblicità finché un abbonamento idoneo rimane attivo.",
+    "Mostrare annunci agli utenti del livello gratuito.",
+    "Rispettare i requisiti applicabili in materia di privacy pubblicitaria e consenso.",
+    "Pubblicità del livello gratuito",
+    "La versione gratuita di Free Calculator mostra annunci tramite Google AdMob, un servizio fornito da Google LLC.",
+    "Google e i suoi partner pubblicitari possono trattare informazioni associate alla pubblicità, tra cui identificatori del dispositivo o pubblicitari, indirizzo IP, informazioni diagnostiche, interazioni con gli annunci e altre informazioni consentite dalle tue scelte sulla privacy e dalla legge applicabile.",
+    "Le informazioni esatte trattate da Google possono dipendere dal dispositivo, dalla regione, dalle impostazioni pubblicitarie, dalle scelte di consenso e dai servizi Google.",
+    "Free Calculator non vende agli inserzionisti la cronologia dei calcoli o gli input della calcolatrice.",
+    "Gli utenti con un abbonamento FreeCalc Pro attivo non ricevono annunci AdMob dall’App finché il loro diritto Pro idoneo rimane attivo.",
+    "Consenso pubblicitario e scelte sulla privacy",
+    "Free Calculator integra la User Messaging Platform (UMP) di Google.",
+    "Quando richiesto, ad esempio per utenti in regioni soggette ai requisiti europei applicabili sulla privacy pubblicitaria, Google può mostrare un messaggio di consenso o privacy prima che vengano effettuate richieste pubblicitarie.",
+    "Free Calculator segue le informazioni sull’idoneità pubblicitaria e sul consenso restituite dalla User Messaging Platform di Google.",
+    "Quando disponibile, Free Calculator offre anche un’opzione Scelte sulla privacy degli annunci che consente agli utenti di accedere all’interfaccia delle opzioni sulla privacy di Google e di rivedere o modificare le scelte applicabili.",
+    "Gli utenti che hanno già fornito il consenso possono usare il meccanismo disponibile delle scelte sulla privacy per rivedere o revocare il consenso applicabile.",
+    "Per ulteriori informazioni su come Google tratta le informazioni quando i suoi servizi sono utilizzati nelle app partner, consulta le informazioni sulla privacy di Google:",
+    "Google — Come Google utilizza le informazioni provenienti da siti o app che usano i suoi servizi",
+    "Responsabilità di Google per i dati aziendali",
+    "Servizi di terze parti",
+    "Free Calculator utilizza i seguenti servizi Google:",
+    "Google Play Billing — Google LLC",
+    "Google Play gestisce il checkout dell’abbonamento, le informazioni di pagamento, la fatturazione ricorrente, la conferma dell’acquisto e la gestione dell’abbonamento.",
+    "Google AdMob — Google LLC",
+    "Google AdMob fornisce annunci agli utenti del livello gratuito.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP gestisce il consenso pubblicitario applicabile e le scelte sulla privacy.",
+    "Questi servizi di terze parti trattano le informazioni secondo i propri termini e le proprie informative sulla privacy.",
+    "Informativa sulla privacy di Google",
+    "Conservazione ed eliminazione dei dati",
+    "Free Calculator non richiede la creazione di un account FreeCalc.",
+    "Le informazioni di calcolo e le preferenze supportate memorizzate da Free Calculator rimangono localmente sul dispositivo in base alle funzionalità dell’App.",
+    "Puoi rimuovere le informazioni memorizzate localmente usando le funzioni di cancellazione disponibili in Free Calculator oppure cancellando l’archivio dell’app Free Calculator dalle impostazioni del dispositivo Android.",
+    "La disinstallazione di Free Calculator rimuove anche le informazioni locali specifiche dell’App secondo il normale comportamento di archiviazione delle applicazioni Android.",
+    "Le informazioni trattate autonomamente da Google tramite Google Play, AdMob o servizi Google correlati sono soggette alle pratiche applicabili di conservazione ed eliminazione di Google.",
+    "Gestione e annullamento dell’abbonamento Google Play",
+    "Gli abbonamenti FreeCalc Pro sono gestiti tramite Google Play.",
+    "Puoi visualizzare, gestire o annullare l’abbonamento tramite:",
+    "Profilo",
+    "Pagamenti e abbonamenti",
+    "Abbonamenti",
+    "L’annullamento è gestito da Google Play. L’annullamento di un abbonamento normalmente impedisce il rinnovo successivo, mentre i vantaggi Pro idonei restano disponibili fino alla fine del periodo già pagato.",
+    "Dopo che Google Play non segnala più a Free Calculator un diritto Pro idoneo, l’App torna al livello gratuito e gli annunci possono essere mostrati di nuovo.",
+    "Sicurezza dei dati",
+    "I dati di calcolo elaborati localmente da Free Calculator sono memorizzati nell’ambiente di archiviazione dell’applicazione sul dispositivo.",
+    "Google Play Billing e i servizi pubblicitari Google comunicano tramite i servizi della piattaforma Google e i rispettivi meccanismi di sicurezza.",
+    "Nessun metodo di archiviazione o trasmissione elettronica può essere garantito come completamente sicuro, ma adottiamo misure ragionevoli appropriate all’architettura di Free Calculator per ridurre al minimo la raccolta e il trattamento non necessari di informazioni.",
+    "Privacy dei minori",
+    "Free Calculator è un’applicazione generale di calcolatrice e utilità.",
+    "L’App non richiede la registrazione di un account o informazioni personali per svolgere le funzioni di calcolo.",
+    "Non raccogliamo consapevolmente informazioni personali direttamente da minori tramite un account FreeCalc o un servizio backend.",
+    "Gli annunci mostrati tramite Google AdMob sono soggetti alle impostazioni del pubblico, alla configurazione della privacy, alle leggi applicabili e alle norme Google configurate per l’App.",
+    "Utenti internazionali",
+    "Free Calculator può essere reso disponibile in più Paesi.",
+    "Servizi di terze parti come Google Play e Google AdMob possono trattare informazioni in Paesi diversi dal tuo Paese di residenza, nel rispetto delle loro pratiche di privacy e garanzie legali applicabili.",
+    "Quando richiesto, il consenso pubblicitario e le scelte sulla privacy vengono forniti tramite la User Messaging Platform di Google.",
+    "Modifiche alla presente Informativa sulla privacy",
+    "Potremmo aggiornare questa Informativa sulla privacy per riflettere modifiche a Free Calculator, servizi di terze parti, requisiti legali o alle nostre pratiche sulla privacy.",
+    "Quando l’informativa viene aggiornata, la data di Ultimo aggiornamento nella parte superiore della pagina viene modificata.",
+    "Invitiamo gli utenti a consultare periodicamente questa Informativa sulla privacy.",
+    "Contattaci",
+    "Se hai domande o dubbi su questa Informativa sulla privacy o sulle pratiche sulla privacy di Free Calculator, contatta:",
+    "Email:",
+    "© 2026 Blue Acid Labs. Tutti i diritti riservati.",
+    "Attiva/disattiva menu sezioni",
+    "Sezioni dell’informativa"
+  ],
+  "vi": [
+    "Mục lục",
+    "Chính sách quyền riêng tư - Free Calculator",
+    "Nhà phát triển:",
+    "Cập nhật lần cuối:",
+    "Tháng 9 năm 2026",
+    "Liên hệ:",
+    "Blue Acid Labs vận hành ứng dụng di động Free Calculator.",
+    "Chính sách quyền riêng tư này giải thích cách thông tin được xử lý khi bạn sử dụng Free Calculator, bao gồm Google Play Billing, Google AdMob và Google User Messaging Platform.",
+    "Thông tin chúng tôi thu thập và xử lý",
+    "Dữ liệu tính toán và tiện ích",
+    "Free Calculator thực hiện trực tiếp trên thiết bị các chức năng toán học, khoa học, tài chính, lương, tiền tip, khoản vay, ngày tháng và các chức năng máy tính khác.",
+    "Dữ liệu nhập, kết quả, tùy chọn và lịch sử tính toán được hỗ trợ được xử lý cục bộ trong Ứng dụng và bộ nhớ thiết bị.",
+    "Chúng tôi không vận hành hệ thống tài khoản FreeCalc hoặc backend FreeCalc để lưu thông tin tính toán của bạn, và không bán, cho thuê hoặc trao đổi dữ liệu tính toán.",
+    "Tùy chọn ứng dụng",
+    "Các cài đặt như ngôn ngữ và tùy chọn ứng dụng được hỗ trợ khác có thể được lưu cục bộ trên thiết bị để Ứng dụng ghi nhớ lựa chọn của bạn.",
+    "Thông tin đăng ký Google Play",
+    "Free Calculator cung cấp gói Pro tùy chọn với giá 1,59 USD mỗi tháng qua Google Play.",
+    "Việc mua gói, xử lý thanh toán, thanh toán định kỳ và quản lý gói được Google Play Billing xử lý.",
+    "Free Calculator kiểm tra trạng thái mua Google Play có sẵn cho Ứng dụng để xác định có quyền Pro đang hoạt động hay không.",
+    "Chúng tôi không thu thập hoặc lưu số thẻ tín dụng, thẻ ghi nợ hoặc thông tin xác thực thanh toán Google Play.",
+    "Gói Pro vẫn tuân theo giá và điều khoản do Google Play hiển thị tại thời điểm mua.",
+    "Cách sử dụng thông tin",
+    "Thông tin do Free Calculator xử lý được dùng để:",
+    "Thực hiện các phép tính và chức năng tiện ích bạn yêu cầu.",
+    "Lưu cục bộ lịch sử tính toán được hỗ trợ và tùy chọn trên thiết bị.",
+    "Xác định gói Google Play Pro có đang hoạt động hay không.",
+    "Bật trải nghiệm Pro không quảng cáo khi gói đủ điều kiện còn hoạt động.",
+    "Hiển thị quảng cáo cho người dùng gói miễn phí.",
+    "Tuân thủ các yêu cầu hiện hành về quyền riêng tư và sự đồng ý quảng cáo.",
+    "Quảng cáo ở gói miễn phí",
+    "Phiên bản miễn phí của Free Calculator hiển thị quảng cáo bằng Google AdMob, dịch vụ do Google LLC cung cấp.",
+    "Google và các đối tác quảng cáo có thể xử lý thông tin liên quan đến quảng cáo, gồm mã nhận dạng thiết bị hoặc quảng cáo, địa chỉ IP, thông tin chẩn đoán, tương tác với quảng cáo và thông tin khác được phép theo lựa chọn quyền riêng tư và luật áp dụng.",
+    "Thông tin cụ thể do Google xử lý có thể phụ thuộc vào thiết bị, khu vực, cài đặt quảng cáo, lựa chọn đồng ý và các dịch vụ Google.",
+    "Free Calculator không bán lịch sử tính toán hoặc dữ liệu nhập máy tính cho nhà quảng cáo.",
+    "Người dùng có gói FreeCalc Pro đang hoạt động sẽ không nhận quảng cáo AdMob từ Ứng dụng khi quyền Pro đủ điều kiện còn hiệu lực.",
+    "Sự đồng ý quảng cáo và lựa chọn quyền riêng tư",
+    "Free Calculator tích hợp Google User Messaging Platform (UMP).",
+    "Khi được yêu cầu, ví dụ tại các khu vực chịu yêu cầu quyền riêng tư quảng cáo của châu Âu, Google có thể hiển thị thông báo đồng ý hoặc quyền riêng tư trước khi gửi yêu cầu quảng cáo.",
+    "Free Calculator tuân theo thông tin về tính đủ điều kiện quảng cáo và sự đồng ý do Google User Messaging Platform trả về.",
+    "Khi có sẵn, Free Calculator cũng cung cấp tùy chọn Quyền riêng tư quảng cáo để người dùng truy cập giao diện tùy chọn quyền riêng tư của Google và xem hoặc thay đổi lựa chọn áp dụng.",
+    "Người dùng đã đồng ý trước đó có thể dùng cơ chế lựa chọn quyền riêng tư hiện có để xem lại hoặc rút lại sự đồng ý.",
+    "Để biết thêm về cách Google xử lý thông tin khi dịch vụ của họ được dùng trong ứng dụng đối tác, vui lòng xem thông tin quyền riêng tư của Google:",
+    "Google — Cách Google sử dụng thông tin từ các trang web hoặc ứng dụng dùng dịch vụ của họ",
+    "Trách nhiệm dữ liệu doanh nghiệp của Google",
+    "Dịch vụ bên thứ ba",
+    "Free Calculator sử dụng các dịch vụ Google sau:",
+    "Google Play Billing — Google LLC",
+    "Google Play xử lý thanh toán gói, thông tin thanh toán, thanh toán định kỳ, xác nhận mua và quản lý gói.",
+    "Google AdMob — Google LLC",
+    "Google AdMob cung cấp quảng cáo cho người dùng gói miễn phí.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP quản lý sự đồng ý quảng cáo và lựa chọn quyền riêng tư áp dụng.",
+    "Các dịch vụ bên thứ ba xử lý thông tin theo điều khoản và chính sách quyền riêng tư riêng.",
+    "Chính sách quyền riêng tư của Google",
+    "Lưu giữ và xóa dữ liệu",
+    "Free Calculator không yêu cầu tạo tài khoản FreeCalc.",
+    "Thông tin tính toán và tùy chọn được hỗ trợ do Free Calculator lưu vẫn nằm cục bộ trên thiết bị theo chức năng của Ứng dụng.",
+    "Bạn có thể xóa thông tin lưu cục bộ bằng chức năng xóa có sẵn trong Free Calculator hoặc xóa bộ nhớ ứng dụng Free Calculator trong cài đặt Android.",
+    "Gỡ cài đặt Free Calculator cũng xóa thông tin cục bộ riêng của Ứng dụng theo cơ chế lưu trữ ứng dụng bình thường của Android.",
+    "Thông tin do Google xử lý độc lập qua Google Play, AdMob hoặc dịch vụ Google liên quan chịu các quy trình lưu giữ và xóa dữ liệu áp dụng của Google.",
+    "Quản lý và hủy gói Google Play",
+    "Gói FreeCalc Pro được quản lý qua Google Play.",
+    "Bạn có thể xem, quản lý hoặc hủy gói qua:",
+    "Hồ sơ",
+    "Thanh toán và gói đăng ký",
+    "Gói đăng ký",
+    "Việc hủy do Google Play xử lý. Hủy gói thường ngăn lần gia hạn tiếp theo trong khi quyền lợi Pro đủ điều kiện vẫn dùng được đến hết kỳ đã thanh toán.",
+    "Sau khi Google Play không còn báo cho Free Calculator về quyền Pro đủ điều kiện, Ứng dụng trở lại gói miễn phí và quảng cáo có thể xuất hiện lại.",
+    "Bảo mật dữ liệu",
+    "Dữ liệu tính toán được Free Calculator xử lý cục bộ được lưu trong môi trường bộ nhớ ứng dụng trên thiết bị.",
+    "Google Play Billing và dịch vụ quảng cáo Google giao tiếp qua dịch vụ nền tảng Google và các cơ chế bảo mật tương ứng.",
+    "Không phương thức lưu trữ hoặc truyền điện tử nào có thể được bảo đảm an toàn hoàn toàn, nhưng chúng tôi áp dụng các biện pháp hợp lý phù hợp với kiến trúc Free Calculator để giảm thiểu việc thu thập và xử lý thông tin không cần thiết.",
+    "Quyền riêng tư của trẻ em",
+    "Free Calculator là ứng dụng máy tính và tiện ích dùng chung.",
+    "Ứng dụng không yêu cầu đăng ký tài khoản hoặc thông tin cá nhân để thực hiện chức năng máy tính.",
+    "Chúng tôi không cố ý thu thập trực tiếp thông tin cá nhân từ trẻ em qua tài khoản FreeCalc hoặc dịch vụ backend.",
+    "Quảng cáo hiển thị qua Google AdMob chịu các cài đặt đối tượng, cấu hình quyền riêng tư, luật áp dụng và chính sách Google được cấu hình cho Ứng dụng.",
+    "Người dùng quốc tế",
+    "Free Calculator có thể được cung cấp tại nhiều quốc gia.",
+    "Các dịch vụ bên thứ ba như Google Play và Google AdMob có thể xử lý thông tin ở quốc gia khác nơi bạn cư trú, theo thực tiễn quyền riêng tư và biện pháp bảo vệ pháp lý áp dụng của họ.",
+    "Khi được yêu cầu, sự đồng ý quảng cáo và lựa chọn quyền riêng tư được cung cấp qua Google User Messaging Platform.",
+    "Thay đổi Chính sách quyền riêng tư này",
+    "Chúng tôi có thể cập nhật Chính sách quyền riêng tư này để phản ánh thay đổi đối với Free Calculator, dịch vụ bên thứ ba, yêu cầu pháp lý hoặc thực tiễn quyền riêng tư.",
+    "Khi chính sách được cập nhật, ngày Cập nhật lần cuối ở đầu trang sẽ được sửa đổi.",
+    "Chúng tôi khuyến khích người dùng xem lại Chính sách quyền riêng tư này định kỳ.",
+    "Liên hệ với chúng tôi",
+    "Nếu có câu hỏi hoặc lo ngại về Chính sách quyền riêng tư này hoặc thực tiễn quyền riêng tư của Free Calculator, hãy liên hệ:",
+    "Email:",
+    "© 2026 Blue Acid Labs. Bảo lưu mọi quyền.",
+    "Bật/tắt menu phần",
+    "Các phần của chính sách"
+  ],
+  "th": [
+    "สารบัญ",
+    "นโยบายความเป็นส่วนตัว - Free Calculator",
+    "ผู้พัฒนา:",
+    "อัปเดตล่าสุด:",
+    "กันยายน 2026",
+    "ติดต่อ:",
+    "Blue Acid Labs เป็นผู้ดำเนินการแอปมือถือ Free Calculator",
+    "นโยบายความเป็นส่วนตัวนี้อธิบายวิธีประมวลผลข้อมูลเมื่อคุณใช้ Free Calculator รวมถึงการใช้ Google Play Billing, Google AdMob และ Google User Messaging Platform",
+    "ข้อมูลที่เราเก็บรวบรวมและประมวลผล",
+    "ข้อมูลการคำนวณและเครื่องมือ",
+    "Free Calculator ทำงานด้านคณิตศาสตร์ วิทยาศาสตร์ การเงิน เงินเดือน ทิป เงินกู้ วันที่ และฟังก์ชันเครื่องคิดเลขอื่น ๆ โดยตรงบนอุปกรณ์ของคุณ",
+    "ข้อมูลที่ป้อนเพื่อคำนวณ ผลลัพธ์ การตั้งค่า และประวัติการคำนวณที่รองรับจะถูกประมวลผลภายในแอปและพื้นที่จัดเก็บของอุปกรณ์",
+    "เราไม่มีระบบบัญชี FreeCalc หรือระบบหลังบ้าน FreeCalc สำหรับจัดเก็บข้อมูลการคำนวณของคุณ และเราไม่ขาย ให้เช่า หรือแลกเปลี่ยนข้อมูลการคำนวณของคุณ",
+    "การตั้งค่าแอป",
+    "การตั้งค่า เช่น ภาษา และค่ากำหนดอื่น ๆ ที่แอปรองรับ อาจถูกจัดเก็บไว้ในอุปกรณ์เพื่อให้แอปจดจำตัวเลือกของคุณ",
+    "ข้อมูลการสมัครสมาชิก Google Play",
+    "Free Calculator มีการสมัคร Pro แบบไม่บังคับ ราคา 1.99 ดอลลาร์สหรัฐต่อเดือนผ่าน Google Play",
+    "การซื้อการสมัคร การประมวลผลการชำระเงิน การเรียกเก็บเงินแบบต่ออายุ และการจัดการการสมัคร ดำเนินการโดย Google Play Billing",
+    "Free Calculator ตรวจสอบสถานะการซื้อจาก Google Play ที่แอปเข้าถึงได้ เพื่อพิจารณาว่ามีสิทธิ์ Pro ที่ใช้งานอยู่หรือไม่",
+    "เราไม่เก็บรวบรวมหรือจัดเก็บหมายเลขบัตรเครดิต หมายเลขบัตรเดบิต หรือข้อมูลรับรองการชำระเงิน Google Play ของคุณ",
+    "การสมัคร Pro ของคุณยังคงอยู่ภายใต้ราคาและข้อกำหนดที่ Google Play แสดงในขณะซื้อ",
+    "วิธีใช้ข้อมูล",
+    "ข้อมูลที่ Free Calculator ประมวลผลถูกใช้เพื่อ:",
+    "ดำเนินการคำนวณและฟังก์ชันเครื่องมือตามที่คุณร้องขอ",
+    "จัดเก็บประวัติการคำนวณที่รองรับและค่ากำหนดไว้ในอุปกรณ์ของคุณ",
+    "ตรวจสอบว่าการสมัคร Google Play Pro ของคุณยังใช้งานอยู่หรือไม่",
+    "เปิดประสบการณ์ Pro แบบไม่มีโฆษณาในช่วงที่การสมัครที่มีสิทธิ์ยังใช้งานอยู่",
+    "แสดงโฆษณาแก่ผู้ใช้ระดับฟรี",
+    "ปฏิบัติตามข้อกำหนดด้านความเป็นส่วนตัวและความยินยอมเกี่ยวกับโฆษณาที่เกี่ยวข้อง",
+    "โฆษณาสำหรับระดับฟรี",
+    "Free Calculator เวอร์ชันฟรีแสดงโฆษณาโดยใช้ Google AdMob ซึ่งเป็นบริการของ Google LLC",
+    "Google และพาร์ทเนอร์โฆษณาอาจประมวลผลข้อมูลที่เกี่ยวข้องกับโฆษณา เช่น ตัวระบุอุปกรณ์หรือตัวระบุโฆษณา ที่อยู่ IP ข้อมูลการวินิจฉัย การโต้ตอบกับโฆษณา และข้อมูลอื่นที่ได้รับอนุญาตตามตัวเลือกความเป็นส่วนตัวและกฎหมายที่ใช้บังคับ",
+    "ข้อมูลที่ Google ประมวลผลจริงอาจขึ้นอยู่กับอุปกรณ์ ภูมิภาค การตั้งค่าโฆษณา ตัวเลือกความยินยอม และบริการของ Google",
+    "Free Calculator ไม่ขายประวัติการคำนวณหรือข้อมูลที่ป้อนในเครื่องคิดเลขของคุณให้ผู้ลงโฆษณา",
+    "ผู้ใช้ที่มีการสมัคร FreeCalc Pro ที่ใช้งานอยู่จะไม่เห็นโฆษณา AdMob จากแอปตราบใดที่สิทธิ์ Pro ที่มีคุณสมบัติยังใช้งานอยู่",
+    "ความยินยอมด้านโฆษณาและตัวเลือกความเป็นส่วนตัว",
+    "Free Calculator ผสานรวม Google User Messaging Platform (UMP)",
+    "เมื่อมีข้อกำหนด เช่น ผู้ใช้ในภูมิภาคที่อยู่ภายใต้ข้อกำหนดความเป็นส่วนตัวด้านโฆษณาของยุโรป Google อาจแสดงข้อความขอความยินยอมหรือข้อความด้านความเป็นส่วนตัวก่อนส่งคำขอโฆษณา",
+    "Free Calculator ปฏิบัติตามข้อมูลคุณสมบัติการโฆษณาและความยินยอมที่ Google User Messaging Platform ส่งกลับมา",
+    "เมื่อมีให้ใช้ Free Calculator ยังมีตัวเลือกความเป็นส่วนตัวของโฆษณา เพื่อให้ผู้ใช้เข้าถึงหน้าตัวเลือกความเป็นส่วนตัวของ Google และตรวจสอบหรือเปลี่ยนตัวเลือกที่เกี่ยวข้องได้",
+    "ผู้ใช้ที่เคยให้ความยินยอมสามารถใช้กลไกตัวเลือกความเป็นส่วนตัวที่มีอยู่เพื่อทบทวนหรือถอนความยินยอมที่เกี่ยวข้อง",
+    "สำหรับข้อมูลเพิ่มเติมเกี่ยวกับวิธีที่ Google ประมวลผลข้อมูลเมื่อใช้บริการในแอปของพาร์ทเนอร์ โปรดดูข้อมูลความเป็นส่วนตัวของ Google:",
+    "Google — วิธีที่ Google ใช้ข้อมูลจากเว็บไซต์หรือแอปที่ใช้บริการของ Google",
+    "ความรับผิดชอบด้านข้อมูลธุรกิจของ Google",
+    "บริการของบุคคลที่สาม",
+    "Free Calculator ใช้บริการ Google ต่อไปนี้:",
+    "Google Play Billing — Google LLC",
+    "Google Play ประมวลผลการชำระค่าสมัคร ข้อมูลการชำระเงิน การเรียกเก็บเงินแบบต่ออายุ การยืนยันการซื้อ และการจัดการการสมัคร",
+    "Google AdMob — Google LLC",
+    "Google AdMob แสดงโฆษณาให้ผู้ใช้ระดับฟรี",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP จัดการความยินยอมด้านโฆษณาและตัวเลือกความเป็นส่วนตัวที่เกี่ยวข้อง",
+    "บริการของบุคคลที่สามเหล่านี้ประมวลผลข้อมูลตามข้อกำหนดและนโยบายความเป็นส่วนตัวของตนเอง",
+    "นโยบายความเป็นส่วนตัวของ Google",
+    "การเก็บรักษาและการลบข้อมูล",
+    "Free Calculator ไม่กำหนดให้คุณต้องสร้างบัญชี FreeCalc",
+    "ข้อมูลการคำนวณและค่ากำหนดที่รองรับซึ่ง Free Calculator จัดเก็บจะอยู่ในอุปกรณ์ของคุณตามการทำงานของแอป",
+    "คุณสามารถลบข้อมูลที่จัดเก็บไว้ในอุปกรณ์ได้ด้วยฟังก์ชันล้างข้อมูลที่มีใน Free Calculator หรือโดยล้างพื้นที่จัดเก็บของแอป Free Calculator ผ่านการตั้งค่าอุปกรณ์ Android",
+    "การถอนการติดตั้ง Free Calculator จะลบข้อมูลในเครื่องที่เป็นของแอปตามพฤติกรรมการจัดเก็บแอปตามปกติของ Android ด้วย",
+    "ข้อมูลที่ Google ประมวลผลแยกต่างหากผ่าน Google Play, AdMob หรือบริการ Google ที่เกี่ยวข้อง อยู่ภายใต้แนวทางการเก็บรักษาและการลบข้อมูลของ Google",
+    "การจัดการและยกเลิกการสมัคร Google Play",
+    "การสมัคร FreeCalc Pro จัดการผ่าน Google Play",
+    "คุณสามารถดู จัดการ หรือยกเลิกการสมัครได้ผ่าน:",
+    "โปรไฟล์",
+    "การชำระเงินและการสมัครใช้บริการ",
+    "การสมัครใช้บริการ",
+    "การยกเลิกดำเนินการโดย Google Play โดยทั่วไป การยกเลิกจะหยุดการต่ออายุครั้งถัดไป ขณะที่สิทธิประโยชน์ Pro ที่มีสิทธิ์จะยังใช้ได้จนสิ้นสุดช่วงการสมัครที่ชำระเงินแล้ว",
+    "เมื่อ Google Play ไม่รายงานสิทธิ์ Pro ที่มีสิทธิ์ให้ Free Calculator อีกต่อไป แอปจะกลับสู่ระดับฟรีและอาจแสดงโฆษณาอีกครั้ง",
+    "ความปลอดภัยของข้อมูล",
+    "ข้อมูลการคำนวณที่ Free Calculator ประมวลผลในอุปกรณ์จะถูกจัดเก็บในสภาพแวดล้อมพื้นที่จัดเก็บของแอปบนอุปกรณ์",
+    "Google Play Billing และบริการโฆษณาของ Google สื่อสารผ่านบริการแพลตฟอร์มของ Google และกลไกความปลอดภัยของแต่ละบริการ",
+    "ไม่มีวิธีจัดเก็บหรือส่งข้อมูลทางอิเล็กทรอนิกส์ใดรับประกันความปลอดภัยได้อย่างสมบูรณ์ แต่เราใช้มาตรการที่สมเหตุสมผลและเหมาะกับสถาปัตยกรรมของ Free Calculator เพื่อลดการเก็บรวบรวมและประมวลผลข้อมูลที่ไม่จำเป็น",
+    "ความเป็นส่วนตัวของเด็ก",
+    "Free Calculator เป็นแอปเครื่องคิดเลขและเครื่องมืออเนกประสงค์",
+    "แอปไม่ต้องลงทะเบียนบัญชีหรือให้ข้อมูลส่วนบุคคลเพื่อใช้ฟังก์ชันเครื่องคิดเลข",
+    "เราไม่ตั้งใจเก็บรวบรวมข้อมูลส่วนบุคคลจากเด็กโดยตรงผ่านบัญชี FreeCalc หรือบริการ backend",
+    "โฆษณาที่แสดงผ่าน Google AdMob อยู่ภายใต้การตั้งค่ากลุ่มเป้าหมาย การกำหนดค่าความเป็นส่วนตัว กฎหมายที่ใช้บังคับ และนโยบาย Google ที่กำหนดสำหรับแอป",
+    "ผู้ใช้ต่างประเทศ",
+    "Free Calculator อาจเปิดให้ใช้ในหลายประเทศ",
+    "บริการของบุคคลที่สาม เช่น Google Play และ Google AdMob อาจประมวลผลข้อมูลในประเทศอื่นนอกเหนือจากประเทศที่คุณอาศัยอยู่ โดยอยู่ภายใต้แนวทางความเป็นส่วนตัวและมาตรการคุ้มครองทางกฎหมายที่เกี่ยวข้อง",
+    "เมื่อมีข้อกำหนด ความยินยอมด้านโฆษณาและตัวเลือกความเป็นส่วนตัวจะให้ผ่าน Google User Messaging Platform",
+    "การเปลี่ยนแปลงนโยบายความเป็นส่วนตัวนี้",
+    "เราอาจอัปเดตนโยบายความเป็นส่วนตัวนี้เพื่อสะท้อนการเปลี่ยนแปลงของ Free Calculator บริการของบุคคลที่สาม ข้อกำหนดทางกฎหมาย หรือแนวทางความเป็นส่วนตัวของเรา",
+    "เมื่อมีการอัปเดตนโยบาย วันที่อัปเดตล่าสุดด้านบนของหน้านี้จะถูกแก้ไข",
+    "เราแนะนำให้ผู้ใช้ทบทวนนโยบายความเป็นส่วนตัวนี้เป็นระยะ",
+    "ติดต่อเรา",
+    "หากคุณมีคำถามหรือข้อกังวลเกี่ยวกับนโยบายความเป็นส่วนตัวนี้หรือแนวทางความเป็นส่วนตัวของ Free Calculator โปรดติดต่อ:",
+    "อีเมล:",
+    "© 2026 Blue Acid Labs สงวนลิขสิทธิ์",
+    "เปิด/ปิดเมนูหัวข้อ",
+    "หัวข้อนโยบาย"
+  ],
+  "my": [
+    "မာတိကာ",
+    "ကိုယ်ရေးအချက်အလက်မူဝါဒ - Free Calculator",
+    "ဖန်တီးသူ:",
+    "နောက်ဆုံးအပ်ဒိတ်:",
+    "စက်တင်ဘာ 2026",
+    "ဆက်သွယ်ရန်:",
+    "Blue Acid Labs သည် Free Calculator မိုဘိုင်းအက်ပ်ကို လည်ပတ်စီမံပါသည်။",
+    "ဤကိုယ်ရေးအချက်အလက်မူဝါဒသည် Free Calculator ကိုအသုံးပြုသည့်အခါ Google Play Billing၊ Google AdMob နှင့် Google User Messaging Platform အသုံးပြုမှုအပါအဝင် အချက်အလက်များကို မည်သို့လုပ်ဆောင်သည်ကို ရှင်းပြပါသည်။",
+    "ကျွန်ုပ်တို့ စုဆောင်းနှင့် လုပ်ဆောင်သော အချက်အလက်",
+    "တွက်ချက်မှုနှင့် အသုံးဝင်ကိရိယာ ဒေတာ",
+    "Free Calculator သည် သင်၏စက်ပေါ်တွင် သင်္ချာ၊ သိပ္ပံ၊ ဘဏ္ဍာရေး၊ လစာ၊ အပိုဆုကြေး၊ ချေးငွေ၊ ရက်စွဲနှင့် အခြားတွက်ချက်မှုလုပ်ဆောင်ချက်များကို တိုက်ရိုက်လုပ်ဆောင်ပါသည်။",
+    "တွက်ချက်မှုထည့်သွင်းချက်များ၊ ရလဒ်များ၊ နှစ်သက်ရာဆက်တင်များနှင့် ပံ့ပိုးထားသော မှတ်တမ်းများကို အက်ပ်နှင့် စက်သိုလှောင်မှုအတွင်း ဒေသတွင်းတွင် လုပ်ဆောင်ပါသည်။",
+    "သင်၏တွက်ချက်မှုအချက်အလက်ကို သိမ်းဆည်းရန် FreeCalc အကောင့်စနစ် သို့မဟုတ် FreeCalc backend ကို ကျွန်ုပ်တို့မလည်ပတ်ဘဲ၊ သင်၏တွက်ချက်မှုဒေတာကို မရောင်း၊ မငှား၊ မကုန်သွယ်ပါ။",
+    "အက်ပ် နှစ်သက်ရာဆက်တင်များ",
+    "ဘာသာစကားကဲ့သို့သော ဆက်တင်များနှင့် ပံ့ပိုးထားသော အခြားအက်ပ်နှစ်သက်ရာများကို အက်ပ်က သင်၏ရွေးချယ်မှုကို မှတ်မိနိုင်ရန် စက်ပေါ်တွင် ဒေသတွင်းသိမ်းထားနိုင်ပါသည်။",
+    "Google Play စာရင်းသွင်းမှုအချက်အလက်",
+    "Free Calculator သည် Google Play မှတစ်ဆင့် တစ်လလျှင် 1.99 USD ဖြင့် ရွေးချယ်နိုင်သော Pro စာရင်းသွင်းမှုကို ပေးပါသည်။",
+    "စာရင်းသွင်းဝယ်ယူမှု၊ ငွေပေးချေမှုလုပ်ဆောင်ခြင်း၊ ထပ်တလဲလဲဘီလ်နှင့် စာရင်းသွင်းမှုစီမံခြင်းကို Google Play Billing က ကိုင်တွယ်ပါသည်။",
+    "Free Calculator သည် လက်ရှိ Pro အခွင့်အရေးရှိမရှိ ဆုံးဖြတ်ရန် အက်ပ်အတွက်ရနိုင်သော Google Play ဝယ်ယူမှုအခြေအနေကို စစ်ဆေးပါသည်။",
+    "ကျွန်ုပ်တို့သည် သင်၏ခရက်ဒစ်ကတ်နံပါတ်၊ ဒက်ဘစ်ကတ်နံပါတ် သို့မဟုတ် Google Play ငွေပေးချေမှုအထောက်အထားများကို မစုဆောင်း၊ မသိမ်းဆည်းပါ။",
+    "သင်၏ Pro စာရင်းသွင်းမှုသည် ဝယ်ယူချိန်တွင် Google Play ပြသသော ဈေးနှုန်းနှင့် စည်းကမ်းချက်များအတိုင်း ဆက်လက်သက်ရောက်ပါသည်။",
+    "အချက်အလက်ကို အသုံးပြုပုံ",
+    "Free Calculator က လုပ်ဆောင်သော အချက်အလက်ကို အောက်ပါအတွက် အသုံးပြုပါသည်:",
+    "သင်တောင်းဆိုသော တွက်ချက်မှုနှင့် အသုံးဝင်ကိရိယာလုပ်ဆောင်ချက်များကို လုပ်ဆောင်ရန်။",
+    "ပံ့ပိုးထားသော တွက်ချက်မှုမှတ်တမ်းနှင့် နှစ်သက်ရာများကို စက်ပေါ်တွင် သိမ်းရန်။",
+    "သင်၏ Google Play Pro စာရင်းသွင်းမှု လက်ရှိအသက်ဝင်မှုရှိမရှိ ဆုံးဖြတ်ရန်။",
+    "အရည်အချင်းပြည့်မီသော စာရင်းသွင်းမှု အသက်ဝင်နေစဉ် ကြော်ငြာမပါသော Pro အတွေ့အကြုံကို ဖွင့်ရန်။",
+    "အခမဲ့အဆင့်အသုံးပြုသူများအား ကြော်ငြာပြရန်။",
+    "သက်ဆိုင်သော ကြော်ငြာကိုယ်ရေးအချက်အလက်နှင့် သဘောတူညီချက်လိုအပ်ချက်များကို လိုက်နာရန်။",
+    "အခမဲ့အဆင့် ကြော်ငြာ",
+    "Free Calculator ၏ အခမဲ့ဗားရှင်းသည် Google LLC မှပေးသော Google AdMob ကို အသုံးပြု၍ ကြော်ငြာပြပါသည်။",
+    "Google နှင့် ၎င်း၏ကြော်ငြာမိတ်ဖက်များသည် စက် သို့မဟုတ် ကြော်ငြာအမှတ်အသားများ၊ IP လိပ်စာ၊ စစ်ဆေးရေးအချက်အလက်၊ ကြော်ငြာနှင့် အပြန်အလှန်လုပ်ဆောင်မှုများနှင့် သင်၏ကိုယ်ရေးရွေးချယ်မှုနှင့် သက်ဆိုင်ရာဥပဒေက ခွင့်ပြုသော အခြားအချက်အလက်များအပါအဝင် ကြော်ငြာဆိုင်ရာအချက်အလက်များကို လုပ်ဆောင်နိုင်ပါသည်။",
+    "Google လုပ်ဆောင်သော အချက်အလက်အတိအကျသည် သင်၏စက်၊ ဒေသ၊ ကြော်ငြာဆက်တင်၊ သဘောတူညီမှုရွေးချယ်မှုနှင့် Google ဝန်ဆောင်မှုများပေါ် မူတည်နိုင်ပါသည်။",
+    "Free Calculator သည် သင်၏တွက်ချက်မှုမှတ်တမ်း သို့မဟုတ် calculator ထည့်သွင်းချက်များကို ကြော်ငြာရှင်များထံ မရောင်းပါ။",
+    "လက်ရှိ FreeCalc Pro စာရင်းသွင်းမှုရှိသူများသည် အရည်အချင်းပြည့်မီသော Pro အခွင့်အရေး အသက်ဝင်နေစဉ် အက်ပ်မှ AdMob ကြော်ငြာများ မမြင်ရပါ။",
+    "ကြော်ငြာသဘောတူညီမှုနှင့် ကိုယ်ရေးရွေးချယ်မှုများ",
+    "Free Calculator သည် Google User Messaging Platform (UMP) ကို ပေါင်းစည်းထားပါသည်။",
+    "လိုအပ်သည့်နေရာများ၊ ဥရောပကြော်ငြာကိုယ်ရေးအချက်အလက်လိုအပ်ချက်များ သက်ရောက်သော ဒေသများတွင် Google သည် ကြော်ငြာတောင်းဆိုမှုမတိုင်မီ သဘောတူညီမှု သို့မဟုတ် ကိုယ်ရေးအချက်အလက်စာတမ်းကို ပြနိုင်ပါသည်။",
+    "Free Calculator သည် Google User Messaging Platform မှ ပြန်လာသော ကြော်ငြာရရှိနိုင်မှုနှင့် သဘောတူညီမှုအချက်အလက်ကို လိုက်နာပါသည်။",
+    "ရရှိနိုင်သည့်နေရာတွင် Free Calculator သည် Google ၏ privacy-options interface ကို ဝင်ရောက်ပြီး သက်ဆိုင်သော ကြော်ငြာကိုယ်ရေးရွေးချယ်မှုများကို ကြည့်ရှု သို့မဟုတ် ပြောင်းလဲနိုင်သော Ad Privacy Choices ရွေးချယ်မှုကိုလည်း ပေးပါသည်။",
+    "ယခင်က သဘောတူခဲ့သော အသုံးပြုသူများသည် ရရှိနိုင်သော privacy choices နည်းလမ်းကို သုံး၍ သဘောတူညီမှုကို ပြန်ကြည့် သို့မဟုတ် ရုပ်သိမ်းနိုင်ပါသည်။",
+    "Google ဝန်ဆောင်မှုများကို မိတ်ဖက်အက်ပ်များတွင် အသုံးပြုသည့်အခါ Google က အချက်အလက်ကို မည်သို့လုပ်ဆောင်သည်ကို ပိုမိုသိရှိလိုပါက Google ၏ ကိုယ်ရေးအချက်အလက်အကြောင်းအရာကို ကြည့်ပါ:",
+    "Google — ၎င်း၏ဝန်ဆောင်မှုကို သုံးသော ဝဘ်ဆိုက် သို့မဟုတ် အက်ပ်များမှ အချက်အလက်ကို Google အသုံးပြုပုံ",
+    "Google လုပ်ငန်းဒေတာ တာဝန်ယူမှု",
+    "တတိယပါတီဝန်ဆောင်မှုများ",
+    "Free Calculator သည် အောက်ပါ Google ဝန်ဆောင်မှုများကို အသုံးပြုပါသည်:",
+    "Google Play Billing — Google LLC",
+    "Google Play သည် စာရင်းသွင်းငွေပေးချေမှု၊ ငွေပေးချေမှုအချက်အလက်၊ ထပ်တလဲလဲဘီလ်၊ ဝယ်ယူမှုအတည်ပြုခြင်းနှင့် စာရင်းသွင်းမှုစီမံခြင်းကို လုပ်ဆောင်ပါသည်။",
+    "Google AdMob — Google LLC",
+    "Google AdMob သည် အခမဲ့အဆင့်အသုံးပြုသူများအတွက် ကြော်ငြာပေးပါသည်။",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP သည် သက်ဆိုင်သော ကြော်ငြာသဘောတူညီမှုနှင့် ကိုယ်ရေးရွေးချယ်မှုများကို စီမံပါသည်။",
+    "ဤတတိယပါတီဝန်ဆောင်မှုများသည် ၎င်းတို့၏ကိုယ်ပိုင် စည်းကမ်းချက်များနှင့် ကိုယ်ရေးအချက်အလက်မူဝါဒများအတိုင်း အချက်အလက်ကို လုပ်ဆောင်ပါသည်။",
+    "Google ကိုယ်ရေးအချက်အလက်မူဝါဒ",
+    "ဒေတာသိမ်းဆည်းမှုနှင့် ဖျက်မှု",
+    "Free Calculator အသုံးပြုရန် FreeCalc အကောင့်ဖန်တီးရန် မလိုအပ်ပါ။",
+    "Free Calculator က သိမ်းထားသော တွက်ချက်မှုအချက်အလက်နှင့် ပံ့ပိုးထားသော နှစ်သက်ရာများသည် အက်ပ်လုပ်ဆောင်ချက်အတိုင်း သင်၏စက်ပေါ်တွင် ဒေသတွင်းကျန်ရှိပါသည်။",
+    "Free Calculator အတွင်း ရရှိနိုင်သော ရှင်းလင်းရေးလုပ်ဆောင်ချက်များကို သုံး၍ သို့မဟုတ် Android စက်ဆက်တင်များမှ Free Calculator ၏ app storage ကို ရှင်းလင်း၍ ဒေသတွင်းသိမ်းထားသော အချက်အလက်ကို ဖယ်ရှားနိုင်ပါသည်။",
+    "Free Calculator ကို ဖြုတ်ချလိုက်ပါက Android ၏ ပုံမှန် app-storage လုပ်ဆောင်ပုံအတိုင်း အက်ပ်သီးသန့် ဒေသတွင်းသိမ်းထားသော အချက်အလက်များလည်း ဖယ်ရှားပါသည်။",
+    "Google Play၊ AdMob သို့မဟုတ် ဆက်စပ် Google ဝန်ဆောင်မှုများမှတစ်ဆင့် Google က သီးခြားလုပ်ဆောင်သော အချက်အလက်များသည် Google ၏ သက်ဆိုင်ရာ သိမ်းဆည်းခြင်းနှင့် ဖျက်ခြင်းလုပ်ထုံးများအောက်တွင် ရှိပါသည်။",
+    "Google Play စာရင်းသွင်းမှု စီမံခြင်းနှင့် ပယ်ဖျက်ခြင်း",
+    "FreeCalc Pro စာရင်းသွင်းမှုများကို Google Play မှတစ်ဆင့် စီမံပါသည်။",
+    "သင်၏စာရင်းသွင်းမှုကို အောက်ပါနေရာမှ ကြည့်၊ စီမံ သို့မဟုတ် ပယ်ဖျက်နိုင်ပါသည်:",
+    "ပရိုဖိုင်",
+    "ငွေပေးချေမှုနှင့် စာရင်းသွင်းမှုများ",
+    "စာရင်းသွင်းမှုများ",
+    "ပယ်ဖျက်မှုကို Google Play က ကိုင်တွယ်ပါသည်။ စာရင်းသွင်းမှုကို ပယ်ဖျက်ခြင်းသည် ပုံမှန်အားဖြင့် နောက်တစ်ကြိမ်အလိုအလျောက်သက်တမ်းတိုးခြင်းကို ရပ်တန့်စေပြီး၊ ပေးချေပြီးသား ကာလကုန်ဆုံးချိန်အထိ အရည်အချင်းပြည့်မီသော Pro အကျိုးကျေးဇူးများကို ဆက်လက်အသုံးပြုနိုင်ပါသည်။",
+    "Google Play က Free Calculator သို့ အရည်အချင်းပြည့်မီသော Pro အခွင့်အရေးကို မဖော်ပြတော့သည့်အခါ အက်ပ်သည် အခမဲ့အဆင့်သို့ ပြန်သွားပြီး ကြော်ငြာများ ပြန်ပေါ်လာနိုင်ပါသည်။",
+    "ဒေတာလုံခြုံရေး",
+    "Free Calculator က ဒေသတွင်းလုပ်ဆောင်သော တွက်ချက်မှုဒေတာကို အက်ပ်၏ စက်သိုလှောင်မှုအတွင်း သိမ်းထားပါသည်။",
+    "Google Play Billing နှင့် Google ကြော်ငြာဝန်ဆောင်မှုများသည် Google ၏ ပလက်ဖောင်းဝန်ဆောင်မှုများနှင့် သက်ဆိုင်ရာ လုံခြုံရေးနည်းလမ်းများကို သုံး၍ ဆက်သွယ်ပါသည်။",
+    "မည်သည့် အီလက်ထရွန်းနစ်သိမ်းဆည်းမှု သို့မဟုတ် ပို့လွှတ်မှုနည်းလမ်းကိုမျှ လုံးဝလုံခြုံကြောင်း အာမခံမရနိုင်သော်လည်း Free Calculator ၏ ဖွဲ့စည်းပုံနှင့် သင့်လျော်သော ကျိုးကြောင်းဆီလျော်သည့် အရေးယူမှုများဖြင့် မလိုအပ်သော အချက်အလက်စုဆောင်းခြင်းနှင့် လုပ်ဆောင်ခြင်းကို လျှော့ချပါသည်။",
+    "ကလေးများ၏ ကိုယ်ရေးအချက်အလက်",
+    "Free Calculator သည် အထွေထွေသုံး calculator နှင့် utility အက်ပ်တစ်ခုဖြစ်ပါသည်။",
+    "အက်ပ်၏ calculator လုပ်ဆောင်ချက်များကို အသုံးပြုရန် အကောင့်မှတ်ပုံတင်ခြင်း သို့မဟုတ် ကိုယ်ရေးအချက်အလက် မလိုအပ်ပါ။",
+    "FreeCalc အကောင့် သို့မဟုတ် backend ဝန်ဆောင်မှုမှတစ်ဆင့် ကလေးများထံမှ ကိုယ်ရေးအချက်အလက်ကို သိလျက်နှင့် တိုက်ရိုက်မစုဆောင်းပါ။",
+    "Google AdMob မှပြသော ကြော်ငြာများသည် အက်ပ်အတွက် သတ်မှတ်ထားသော ပရိသတ်ဆက်တင်များ၊ ကိုယ်ရေးအချက်အလက်ဆက်တင်များ၊ သက်ဆိုင်ရာဥပဒေများနှင့် Google မူဝါဒများအောက်တွင် ရှိပါသည်။",
+    "နိုင်ငံတကာအသုံးပြုသူများ",
+    "Free Calculator ကို နိုင်ငံအများအပြားတွင် ရရှိနိုင်ပါသည်။",
+    "Google Play နှင့် Google AdMob ကဲ့သို့သော တတိယပါတီဝန်ဆောင်မှုများသည် ၎င်းတို့၏ သက်ဆိုင်ရာ ကိုယ်ရေးအလေ့အထများနှင့် ဥပဒေရေးရာကာကွယ်မှုများအောက်တွင် သင်နေထိုင်သည့်နိုင်ငံမဟုတ်သော နိုင်ငံများတွင် အချက်အလက်ကို လုပ်ဆောင်နိုင်ပါသည်။",
+    "လိုအပ်သည့်နေရာတွင် ကြော်ငြာသဘောတူညီမှုနှင့် ကိုယ်ရေးရွေးချယ်မှုများကို Google User Messaging Platform မှတစ်ဆင့် ပေးပါသည်။",
+    "ဤကိုယ်ရေးအချက်အလက်မူဝါဒ ပြောင်းလဲမှုများ",
+    "Free Calculator၊ တတိယပါတီဝန်ဆောင်မှုများ၊ ဥပဒေရေးရာလိုအပ်ချက်များ သို့မဟုတ် ကျွန်ုပ်တို့၏ ကိုယ်ရေးအလေ့အထများ ပြောင်းလဲမှုကို ထင်ဟပ်ရန် ဤမူဝါဒကို အပ်ဒိတ်လုပ်နိုင်ပါသည်။",
+    "မူဝါဒကို အပ်ဒိတ်လုပ်သည့်အခါ ဤစာမျက်နှာထိပ်ရှိ နောက်ဆုံးအပ်ဒိတ်ရက်ကို ပြင်ဆင်ပါမည်။",
+    "အသုံးပြုသူများအား ဤကိုယ်ရေးအချက်အလက်မူဝါဒကို အခါအားလျော်စွာ ပြန်လည်သုံးသပ်ရန် အားပေးပါသည်။",
+    "ကျွန်ုပ်တို့ကို ဆက်သွယ်ရန်",
+    "ဤကိုယ်ရေးအချက်အလက်မူဝါဒ သို့မဟုတ် Free Calculator ၏ ကိုယ်ရေးအလေ့အထများနှင့်ပတ်သက်၍ မေးခွန်း သို့မဟုတ် စိုးရိမ်ချက်ရှိပါက ဆက်သွယ်ပါ:",
+    "အီးမေးလ်:",
+    "© 2026 Blue Acid Labs. မူပိုင်ခွင့်အားလုံး ထိန်းသိမ်းထားသည်။",
+    "ကဏ္ဍမီနူးကို ဖွင့်/ပိတ်",
+    "မူဝါဒကဏ္ဍများ"
+  ],
+  "id": [
+    "Daftar isi",
+    "Kebijakan Privasi - Free Calculator",
+    "Pengembang:",
+    "Terakhir diperbarui:",
+    "September 25, 2026",
+    "Kontak:",
+    "Blue Acid Labs mengoperasikan aplikasi seluler Free Calculator.",
+    "Kebijakan Privasi ini menjelaskan bagaimana informasi diproses saat Anda menggunakan Free Calculator, termasuk penggunaan Google Play Billing, Google AdMob, dan Google User Messaging Platform.",
+    "Informasi yang Kami Kumpulkan dan Proses",
+    "Data Perhitungan dan Utilitas",
+    "Free Calculator menjalankan fungsi matematika, ilmiah, keuangan, gaji, tip, pinjaman, tanggal, dan fungsi kalkulator lainnya langsung di perangkat Anda.",
+    "Input perhitungan, hasil, preferensi, dan riwayat perhitungan yang didukung diproses secara lokal di dalam Aplikasi dan penyimpanan perangkat.",
+    "Kami tidak mengoperasikan sistem akun FreeCalc atau backend FreeCalc untuk menyimpan informasi perhitungan Anda, dan kami tidak menjual, menyewakan, atau memperdagangkan data perhitungan Anda.",
+    "Preferensi Aplikasi",
+    "Pengaturan seperti bahasa dan preferensi aplikasi lain yang didukung dapat disimpan secara lokal di perangkat agar Aplikasi dapat mengingat pilihan Anda.",
+    "Informasi Langganan Google Play",
+    "Free Calculator menawarkan langganan Pro opsional seharga USD 1,59 per bulan melalui Google Play.",
+    "Pembelian langganan, pemrosesan pembayaran, penagihan berulang, dan pengelolaan langganan ditangani oleh Google Play Billing.",
+    "Free Calculator memeriksa status pembelian Google Play yang tersedia untuk Aplikasi guna menentukan apakah terdapat hak Pro yang aktif.",
+    "Kami tidak mengumpulkan atau menyimpan nomor kartu kredit, nomor kartu debit, atau kredensial pembayaran Google Play Anda.",
+    "Langganan Pro Anda tetap tunduk pada harga dan ketentuan yang ditampilkan Google Play pada saat pembelian.",
+    "Bagaimana Informasi Digunakan",
+    "Informasi yang diproses oleh Free Calculator digunakan untuk:",
+    "Melakukan perhitungan dan fungsi utilitas yang Anda minta.",
+    "Menyimpan riwayat perhitungan yang didukung dan preferensi secara lokal di perangkat Anda.",
+    "Menentukan apakah langganan Google Play Pro Anda aktif.",
+    "Mengaktifkan pengalaman Pro tanpa iklan selama langganan yang memenuhi syarat tetap aktif.",
+    "Menampilkan iklan kepada pengguna tingkat Gratis.",
+    "Mematuhi persyaratan privasi dan persetujuan iklan yang berlaku.",
+    "Iklan Tingkat Gratis",
+    "Versi Gratis Free Calculator menampilkan iklan menggunakan Google AdMob, layanan yang disediakan oleh Google LLC.",
+    "Google dan mitra iklannya dapat memproses informasi yang terkait dengan iklan, termasuk pengenal perangkat atau iklan, alamat IP, informasi diagnostik, interaksi dengan iklan, serta informasi lain yang diizinkan oleh pilihan privasi Anda dan hukum yang berlaku.",
+    "Informasi pasti yang diproses Google dapat bergantung pada perangkat, wilayah, pengaturan iklan, pilihan persetujuan, dan layanan Google Anda.",
+    "Free Calculator tidak menjual riwayat perhitungan atau input kalkulator Anda kepada pengiklan.",
+    "Pengguna dengan langganan FreeCalc Pro aktif tidak menerima iklan AdMob dari Aplikasi selama hak Pro yang memenuhi syarat tetap aktif.",
+    "Persetujuan Iklan dan Pilihan Privasi",
+    "Free Calculator mengintegrasikan Google User Messaging Platform (UMP).",
+    "Jika diwajibkan, misalnya untuk pengguna di wilayah yang tunduk pada persyaratan privasi iklan Eropa yang berlaku, Google dapat menampilkan pesan persetujuan atau privasi sebelum permintaan iklan dilakukan.",
+    "Free Calculator mengikuti informasi kelayakan iklan dan persetujuan yang dikembalikan melalui Google User Messaging Platform.",
+    "Jika tersedia, Free Calculator juga menyediakan opsi Pilihan Privasi Iklan yang memungkinkan pengguna mengakses antarmuka opsi privasi Google dan meninjau atau mengubah pilihan privasi iklan yang berlaku.",
+    "Pengguna yang sebelumnya telah memberikan persetujuan dapat menggunakan mekanisme pilihan privasi yang tersedia untuk meninjau kembali atau mencabut persetujuan yang berlaku.",
+    "Untuk informasi tambahan tentang cara Google memproses informasi ketika layanannya digunakan di aplikasi mitra, silakan lihat informasi privasi Google:",
+    "Google — Cara Google menggunakan informasi dari situs atau aplikasi yang menggunakan layanannya",
+    "Tanggung Jawab Data Bisnis Google",
+    "Layanan Pihak Ketiga",
+    "Free Calculator menggunakan layanan Google berikut:",
+    "Google Play Billing — Google LLC",
+    "Google Play memproses checkout langganan, informasi pembayaran, penagihan berulang, konfirmasi pembelian, dan pengelolaan langganan.",
+    "Google AdMob — Google LLC",
+    "Google AdMob menyediakan iklan bagi pengguna tingkat Gratis.",
+    "Google User Messaging Platform — Google LLC",
+    "Google UMP mengelola persetujuan iklan dan pilihan privasi yang berlaku.",
+    "Layanan pihak ketiga ini memproses informasi sesuai ketentuan dan kebijakan privasi mereka masing-masing.",
+    "Kebijakan Privasi Google",
+    "Penyimpanan dan Penghapusan Data",
+    "Free Calculator tidak mewajibkan Anda membuat akun FreeCalc.",
+    "Informasi perhitungan dan preferensi yang didukung yang disimpan oleh Free Calculator tetap berada secara lokal di perangkat sesuai fungsi Aplikasi.",
+    "Anda dapat menghapus informasi yang tersimpan secara lokal dengan menggunakan fungsi pembersihan yang tersedia di Free Calculator atau dengan menghapus penyimpanan aplikasi Free Calculator melalui pengaturan perangkat Android.",
+    "Menghapus instalasi Free Calculator juga menghapus informasi lokal khusus Aplikasi sesuai perilaku penyimpanan aplikasi Android yang normal.",
+    "Informasi yang diproses secara mandiri oleh Google melalui Google Play, AdMob, atau layanan Google terkait tunduk pada praktik penyimpanan dan penghapusan Google yang berlaku.",
+    "Pengelolaan dan Pembatalan Langganan Google Play",
+    "Langganan FreeCalc Pro dikelola melalui Google Play.",
+    "Anda dapat melihat, mengelola, atau membatalkan langganan melalui:",
+    "Profil",
+    "Pembayaran & langganan",
+    "Langganan",
+    "Pembatalan ditangani oleh Google Play. Membatalkan langganan biasanya mencegah perpanjangan berikutnya, sementara manfaat Pro yang memenuhi syarat tetap tersedia hingga akhir periode langganan yang sudah dibayar.",
+    "Setelah Google Play tidak lagi melaporkan hak Pro yang memenuhi syarat kepada Free Calculator, Aplikasi kembali ke tingkat Gratis dan iklan dapat ditampilkan lagi.",
+    "Keamanan Data",
+    "Data perhitungan yang diproses secara lokal oleh Free Calculator disimpan di lingkungan penyimpanan aplikasi pada perangkat.",
+    "Google Play Billing dan layanan periklanan Google berkomunikasi menggunakan layanan platform Google dan mekanisme keamanan masing-masing.",
+    "Tidak ada metode penyimpanan atau transmisi elektronik yang dapat dijamin sepenuhnya aman, tetapi kami mengambil langkah wajar yang sesuai dengan arsitektur Free Calculator untuk meminimalkan pengumpulan dan pemrosesan informasi yang tidak perlu.",
+    "Privasi Anak",
+    "Free Calculator adalah aplikasi kalkulator dan utilitas untuk penggunaan umum.",
+    "Aplikasi tidak memerlukan pendaftaran akun atau informasi pribadi untuk menjalankan fungsi kalkulator.",
+    "Kami tidak dengan sengaja mengumpulkan informasi pribadi secara langsung dari anak-anak melalui akun FreeCalc atau layanan backend.",
+    "Iklan yang ditampilkan melalui Google AdMob tunduk pada pengaturan audiens, konfigurasi privasi, hukum yang berlaku, dan kebijakan Google yang dikonfigurasi untuk Aplikasi.",
+    "Pengguna Internasional",
+    "Free Calculator dapat tersedia di beberapa negara.",
+    "Layanan pihak ketiga seperti Google Play dan Google AdMob dapat memproses informasi di negara selain negara tempat Anda tinggal, sesuai praktik privasi dan perlindungan hukum yang berlaku bagi mereka.",
+    "Jika diwajibkan, persetujuan iklan dan pilihan privasi disediakan melalui Google User Messaging Platform.",
+    "Perubahan pada Kebijakan Privasi Ini",
+    "Kami dapat memperbarui Kebijakan Privasi ini untuk mencerminkan perubahan pada Free Calculator, layanan pihak ketiga, persyaratan hukum, atau praktik privasi kami.",
+    "Saat kebijakan diperbarui, tanggal Terakhir diperbarui di bagian atas halaman ini akan direvisi.",
+    "Kami mendorong pengguna untuk meninjau Kebijakan Privasi ini secara berkala.",
+    "Hubungi Kami",
+    "Jika Anda memiliki pertanyaan atau kekhawatiran terkait Kebijakan Privasi ini atau praktik privasi Free Calculator, hubungi:",
+    "Email:",
+    "© 2026 Blue Acid Labs. Seluruh hak dilindungi.",
+    "Alihkan menu bagian",
+    "Bagian kebijakan"
+  ]
+};
+  const languageLabels = {
+  "en": "Select language",
+  "zh-CN": "选择语言",
+  "ja": "言語を選択",
+  "ko": "언어 선택",
+  "de": "Sprache auswählen",
+  "fr": "Choisir la langue",
+  "pt": "Selecionar idioma",
+  "es": "Seleccionar idioma",
+  "ar": "اختر اللغة",
+  "it": "Seleziona lingua",
+  "vi": "Chọn ngôn ngữ",
+  "th": "เลือกภาษา",
+  "my": "ဘာသာစကားရွေးရန်",
+  "id": "Pilih bahasa"
+};
+  const languageSelect = document.getElementById('languageSelect');
+  const originalText = new WeakMap();
+  const originalAttributes = new WeakMap();
+  let currentLanguage = 'en';
+  let applyingTranslation = false;
+
+  const supportedLanguages = Object.keys(translations);
+
+  function normalizeLanguage(value) {
+    if (!value) return 'en';
+    const raw = String(value).replace('_','-');
+    const lower = raw.toLowerCase();
+    if (lower === 'zh' || lower.startsWith('zh-')) return 'zh-CN';
+    if (lower === 'my' || lower.startsWith('my-')) return 'my';
+    if (lower === 'id' || lower.startsWith('id-')) return 'id';
+    const base = lower.split('-')[0];
+    return supportedLanguages.find(code => code.toLowerCase() === lower)
+      || supportedLanguages.find(code => code.toLowerCase().split('-')[0] === base)
+      || 'en';
+  }
+
+  function getSavedOrBrowserLanguage() {
+    const saved = localStorage.getItem('freecalc-policy-language');
+    if (saved && supportedLanguages.includes(saved)) return saved;
+    const browserList = Array.isArray(navigator.languages) && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language || 'en'];
+    for (const lang of browserList) {
+      const normalized = normalizeLanguage(lang);
+      if (supportedLanguages.includes(normalized)) return normalized;
+    }
+    return 'en';
+  }
+
+  function translationMap(lang) {
+    const pack = translations[lang] || translations.en;
+    return new Map(SOURCE_TEXTS.map((source, index) => [source, pack[index] || source]));
+  }
+
+  function translateKey(source, map) {
+    if (map.has(source)) return map.get(source);
+    const tocMatch = source.match(/^(\d+\.\s*)(.+)$/);
+    if (tocMatch && map.has(tocMatch[2])) return tocMatch[1] + map.get(tocMatch[2]);
+    return source;
+  }
+
+  function rememberAndTranslateTextNode(node, map) {
+    if (!node || node.nodeType !== Node.TEXT_NODE) return;
+    const raw = node.nodeValue || '';
+    const trimmed = raw.trim();
+    if (!trimmed) return;
+
+    let source = originalText.get(node);
+    if (!source) {
+      source = trimmed;
+      originalText.set(node, source);
+    }
+    const translated = translateKey(source, map);
+    if (translated === source && !map.has(source) && !/^(\d+\.\s*)/.test(source)) return;
+
+    const leading = raw.match(/^\s*/)?.[0] || '';
+    const trailing = raw.match(/\s*$/)?.[0] || '';
+    const nextValue = leading + translated + trailing;
+    if (node.nodeValue !== nextValue) node.nodeValue = nextValue;
+  }
+
+  function translateAttributes(el, map, lang) {
+    if (!(el instanceof Element)) return;
+    const attrs = ['aria-label','title','placeholder','data-tooltip'];
+    let saved = originalAttributes.get(el);
+    if (!saved) {
+      saved = {};
+      attrs.forEach(attr => {
+        if (el.hasAttribute(attr)) saved[attr] = el.getAttribute(attr);
+      });
+      originalAttributes.set(el, saved);
+    }
+    attrs.forEach(attr => {
+      if (!(attr in saved)) return;
+      let value = saved[attr];
+      if (value === 'Select language') value = languageLabels[lang] || languageLabels.en;
+      else value = translateKey(value, map);
+      el.setAttribute(attr, value);
+    });
+  }
+
+  function translateSubtree(root, map, lang) {
+    if (!root) return;
+    if (root.nodeType === Node.TEXT_NODE) {
+      rememberAndTranslateTextNode(root, map);
+      return;
+    }
+    if (!(root instanceof Element || root instanceof Document || root instanceof DocumentFragment)) return;
+
+    if (root instanceof Element) translateAttributes(root, map, lang);
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+    let node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const parent = node.parentElement;
+        if (parent && ['SCRIPT','STYLE','SELECT','OPTION','TEXTAREA'].includes(parent.tagName)) continue;
+        rememberAndTranslateTextNode(node, map);
+      } else {
+        translateAttributes(node, map, lang);
+      }
+    }
+  }
+
+  function applyLanguage(lang, save = true) {
+    const normalized = normalizeLanguage(lang);
+    const map = translationMap(normalized);
+    currentLanguage = normalized;
+    applyingTranslation = true;
+
+    document.documentElement.lang = normalized;
+    document.documentElement.dir = normalized === 'ar' ? 'rtl' : 'ltr';
+    languageSelect.value = normalized;
+    languageSelect.setAttribute('aria-label', languageLabels[normalized] || languageLabels.en);
+    languageSelect.setAttribute('title', languageLabels[normalized] || languageLabels.en);
+
+    translateSubtree(document.body, map, normalized);
+
+    const titleIndex = SOURCE_TEXTS.indexOf('Privacy Policy - Free Calculator');
+    document.title = (translations[normalized] || translations.en)[titleIndex] || 'Privacy Policy - Free Calculator';
+
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      const descriptions = {
+        en: 'Privacy Policy for the Free Calculator app by Blue Acid Labs.',
+        'zh-CN': 'Blue Acid Labs 的 Free Calculator 应用隐私政策。',
+        ja: 'Blue Acid Labs の Free Calculator アプリのプライバシーポリシー。',
+        ko: 'Blue Acid Labs의 Free Calculator 앱 개인정보처리방침.',
+        de: 'Datenschutzerklärung für die Free Calculator App von Blue Acid Labs.',
+        fr: 'Politique de confidentialité de l’application Free Calculator de Blue Acid Labs.',
+        pt: 'Política de Privacidade do aplicativo Free Calculator da Blue Acid Labs.',
+        es: 'Política de privacidad de la aplicación Free Calculator de Blue Acid Labs.',
+        ar: 'سياسة الخصوصية لتطبيق Free Calculator من Blue Acid Labs.',
+        it: 'Informativa sulla privacy dell’app Free Calculator di Blue Acid Labs.',
+        vi: 'Chính sách quyền riêng tư cho ứng dụng Free Calculator của Blue Acid Labs.',
+        th: 'นโยบายความเป็นส่วนตัวสำหรับแอป Free Calculator โดย Blue Acid Labs',
+        my: 'Blue Acid Labs ၏ Free Calculator အက်ပ်အတွက် ကိုယ်ရေးအချက်အလက်မူဝါဒ။',
+        id: 'Kebijakan Privasi untuk aplikasi Free Calculator oleh Blue Acid Labs.'
+      };
+      metaDescription.setAttribute('content', descriptions[normalized] || descriptions.en);
+    }
+
+    if (save) localStorage.setItem('freecalc-policy-language', normalized);
+    applyingTranslation = false;
+  }
+
+  languageSelect.addEventListener('change', event => applyLanguage(event.target.value, true));
+
+  const translationObserver = new MutationObserver(mutations => {
+    if (applyingTranslation) return;
+    const map = translationMap(currentLanguage);
+    applyingTranslation = true;
+    mutations.forEach(mutation => {
+      if (mutation.type === 'characterData') {
+        const node = mutation.target;
+        if (!originalText.has(node)) originalText.set(node, (node.nodeValue || '').trim());
+        rememberAndTranslateTextNode(node, map);
+      }
+      mutation.addedNodes.forEach(node => translateSubtree(node, map, currentLanguage));
+    });
+    applyingTranslation = false;
+  });
+
+  applyLanguage(getSavedOrBrowserLanguage(), false);
+  translationObserver.observe(document.body, {subtree:true, childList:true, characterData:true});
+
+  window.i18n = {
+    get language() { return currentLanguage; },
+    setLanguage: lang => applyLanguage(lang, true),
+    t: source => translateKey(source, translationMap(currentLanguage)),
+    setText: (element, englishText) => {
+      if (!element) return;
+      originalText.set(element.firstChild || element.appendChild(document.createTextNode('')), englishText);
+      element.textContent = translateKey(englishText, translationMap(currentLanguage));
+    }
+  };
+
+  const toggle = document.getElementById('menuToggle');
+  const toc = document.getElementById('toc');
+  const scrim = document.getElementById('scrim');
+
+  function closeMenu(){
+    toc.classList.remove('open');
+    scrim.classList.remove('open');
+    toggle.setAttribute('aria-expanded','false');
+  }
+  function openMenu(){
+    toc.classList.add('open');
+    scrim.classList.add('open');
+    toggle.setAttribute('aria-expanded','true');
+  }
+  toggle.addEventListener('click', () => {
+    toc.classList.contains('open') ? closeMenu() : openMenu();
+  });
+  scrim.addEventListener('click', closeMenu);
+  toc.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+
+  const links = Array.from(document.querySelectorAll('.toc a'));
+  const sections = links.map(l => document.querySelector(l.getAttribute('href')));
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      const id = '#' + entry.target.id;
+      const link = links.find(l => l.getAttribute('href') === id);
+      if(!link) return;
+      if(entry.isIntersecting){
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px', threshold: 0 });
+
+  sections.forEach(s => { if(s) observer.observe(s); });
+</script>
+
+</body>
+</html>
